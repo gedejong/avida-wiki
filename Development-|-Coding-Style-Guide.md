@@ -4,12 +4,15 @@ when developing within Avida.
 </p>
 
 
-### C/C++ Dialect
+## C/C++ Dialect
 <ul>
 <li>ISO Standard C++ (1998/2003)</li>
 <li>Do not use GCC extensions (such as multi-line strings and comments).</li>
 <li>No compiler warnings with explicitly supported compilers, including GCC and Clang-LLVM.</li>
 </ul>
+
+
+## Code Formatting
 
 <h3>Indentation</h3>
 <ul>
@@ -189,8 +192,8 @@ int Function ( );
 </ul>
 
 
-<p>&nbsp;</p>
-<h2>Naming Conventions</h2>
+## Naming Conventions
+
 <ul>
 <li>
   Variable names should be all lowercase.  Multi-word variables should have the
@@ -231,15 +234,12 @@ cParser::parseCodeBlock()
 </pre>
 </li>
 <li>
-  All class names should begin with a lowercase 'c', followed by capital 
-  letters leading each word (similar to functions).  Templates have the same 
-  pattern, but beginning with a 't', and enumeration types begin with an 
-  'e'. Lastly, structs should begin with a 's'. Examples:
+  All class names should begin capital letters leading each word (similar to functions). Examples:
 <pre>
-cGenome
-tArray
-eHeadTypes
-sSomeData
+Genome
+Array
+HeadTypes
+SomeData
 </pre>
 </li>
 <li>
@@ -256,9 +256,9 @@ MAX_STRING_LENGTH
   <kbd>.cc</kbd>.
   Examples:
 <pre>
-cGenome.h
-tArray.h
-cPopulation.cc
+Genome.h
+Array.h
+Population.cc
 </pre>
 </li>
 <li>
