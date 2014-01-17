@@ -32,7 +32,7 @@ mandatory, it will be in blue.  If it is optional, it will be in green, and
 Analyze mode provides a number of commands for loading, manipulating,
 and saving analysis data. In addition to the analyze mode specific
 commands detailed in the following sections, all of the
-<a href="actions.html">Avida actions</a> can be called as well.
+<a href="List-of-actions">Avida actions</a> can be called as well.
 </p>
 
 <p>&nbsp;</p>
@@ -527,8 +527,8 @@ automate some tedium.
   [<span class="cmdargopt">num_cells=-1</span>]
 </strong></dt>
 <dd>
-  Creates a clone population file (as <a href="actions.html#SaveClone">SaveClone</a>) 
-  from the current batch, suitable for loading with <a href="actions.html#LoadClone">LoadClone</a>.  
+  Creates a clone population file (as <a href="List-of-actions#SaveClone">SaveClone</a>) 
+  from the current batch, suitable for loading with <a href="List-of-actions#LoadClone">LoadClone</a>.  
   The starting update is 0 and the archive is empty.  num_cells should be the number 
   of cells in the world -- the default value of -1 will not be accepted by LoadClone, 
   so be sure to specify the correct number.
@@ -541,7 +541,7 @@ automate some tedium.
   [<span class="cmdargopt">start_cell=0</span>] [<span class="cmdargopt">lineage=0</span>]
 </strong></dt>
 <dd>
-  Creates an <a href="events.html">events file</a> which injects all the genotypes of the current 
+  Creates an <a href="The-events-file">events file</a> which injects all the genotypes of the current 
   batch at update 0.  Injection starts at the given start_cell id and increments 
   upward.  All injected organisms are assigned the given lineage label and start 
   with the relevant merit; num_cpus copies of each genotype are injected.
@@ -554,7 +554,7 @@ automate some tedium.
   [<span class="cmdargopt">start_cell=0</span>] [<span class="cmdargopt">lineage=0</span>]
 </strong></dt>
 <dd>
-  Creates an <a href="events.html">events file</a> which injects all the genotypes of the current 
+  Creates an <a href="The-events-file">events file</a> which injects all the genotypes of the current 
   batch before update 0 (same as WRITE_INJECT_EVENTS but doesn't cause no organism errors).  Injection starts at 0 (this is made for reintroduction of single organisms only!) and injects a single organism only.  Injected organism is assigned the given lineage label and starts
   with the relevant merit.
   <br />
@@ -570,7 +570,7 @@ automate some tedium.
   [<span class="cmdargopt">lineage=0</span>]
 </strong></dt>
 <dd>
-  Creates an <a href="events.html">events file</a> which acts much like the one produced 
+  Creates an <a href="The-events-file">events file</a> which acts much like the one produced 
   by WRITE_INJECT_EVENTS, but injects two populations (from the given batches), separates 
   the populations at update 0 (via SeverGridRow grid_side), and joins them at the given 
   join_UD.  Organisms from batch_A are injected starting at cell id 0; organisms from 
@@ -805,7 +805,7 @@ There are a handful of commands that will automatically perform
 landscapping.  The landscape will only be run once per organism even when
 multiple output variables are used.  For enhanced performance on
 multi-processor/multi-core systems, see the
-<a href="actions.html#PrecalcLandscape">PrecalcLandscape</a> action.
+<a href="List-of-actions#PrecalcLandscape">PrecalcLandscape</a> action.
 </p>
 
 <div align="center">
