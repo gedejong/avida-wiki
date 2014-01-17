@@ -1,0 +1,11 @@
+Avida 3 will include and be built around a flexible, extensible application programming interface (API).  The intention of the API is to provide a powerful, stable interface to core Avida functionality.
+
+The API will be broken up into multiple modules that will be connected together to create rich experiments and powerful analyses. The development of this API is very active right now.  The following provides an overview of existing components and an estimation of their completeness and stability.
+
+== API Modules ==
+* core
+* data
+* environment
+* systematics
+* util
+* viewer
