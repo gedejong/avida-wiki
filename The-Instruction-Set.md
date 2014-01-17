@@ -143,7 +143,7 @@ The instructions <code>nop-A</code> (<b>a</b>), <code>nop-B</code>
 (<b>b</b>), and <code>nop-C</code> (<b>c</b>) are no-operation
 instructions, and will not do
 anything when executed. They will, however, modifiy the behavior of the
-instruction preceeding it (by changing the [CPU](Glossary:CPU)
+instruction preceeding it (by changing the [CPU](Glossary: CPU)
 component that it affects; see also
 <a href="Glossary:Nop-Register-Notation">nop-register</a>  notation and
 <a href="Glossary:Nop-Head-Notation">nop-head</a>  notation) or act as part
