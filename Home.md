@@ -6,8 +6,8 @@ The following articles provide a good introduction to Avida:
 * [Meet the Scientist](http://www.microbeworld.org/index.php?option=com_content&view=article&id=784:mts59-charles-ofria-&catid=37:meet-the-scientist&Itemid=1550 podcast interview of Charles Ofria by Carl Zimmer (2010)
 
 More detailed materials:
+* [About Digital Evolution](wiki/About)
 * [Avida: A Software Platform for Research in Computational Evolutionary Biology](http://www.cse.msu.edu/~ofria/pubs/2009AvidaIntro.pdf) by C. Ofria, D.M. Bryson, and C. Wilke (2009).
-* The latest documentation supplied with Avida (found in the avida-core directory of the source folder)
 * The contents of this Wiki
 
 If you would like to contribute to this documentation, please create an account via the log-in link at the top-right of the page.
