@@ -7,7 +7,7 @@ when developing within Avida.
 <p>&nbsp;</p>
 <h2>Coding Style Guidelines</h2>
 
-<h2>C/C++ Dialect</h2>
+### C/C++ Dialect
 <ul>
 <li>ISO Standard C++ (1998/2003)</li>
 <li>Do not use GCC extensions (such as multi-line strings and comments).</li>
