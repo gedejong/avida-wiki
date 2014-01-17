@@ -4,9 +4,6 @@ when developing within Avida.
 </p>
 
 
-<p>&nbsp;</p>
-<h2>Coding Style Guidelines</h2>
-
 ### C/C++ Dialect
 <ul>
 <li>ISO Standard C++ (1998/2003)</li>
