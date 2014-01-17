@@ -1,0 +1,1 @@
+An instruction set is actually a whole set of configurations, usually contained in their own file and included in the avida.cfg file with <code>#include INST_SET=instset.cfg</code>.  See the main Instruction Set File documentation for the format of this file.
