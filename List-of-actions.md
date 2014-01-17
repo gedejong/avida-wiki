@@ -1026,7 +1026,7 @@ in the population or the number of instructions executed).</li>
 <em>&lt;cString fname&gt; &lt;cString format&gt;</em>Append to the file specified (continuous output), the data given in the
 column list. The column list needs to be a comma-seperated list of
 keywords representing the data types. Many possible data types can be
-output; see the <a href="print_data.html">complete listing</a> for details.
+output; see the <a href="PrintData-Options">complete listing</a> for details.
 Note that this event will even create a detailed column legend at the top
 of your file so you don't need to seperately keep track of what the
 columns mean.</li>
