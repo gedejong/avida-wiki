@@ -154,7 +154,7 @@ of a <a href="Glossary:Label">label</a>  to denote positions in the
 <h3>(d) <code>if-n-equ</code></h3>
 
 This instruction compares the
-<a href="Glossary:Nop-Register-Notation">?BX?</a>  register to its
+<a href="Glossary: Nop-Register-Notation">?BX?</a>  register to its
 <a href="Glossary:Complement-Label">complement</a>. If they are not
 equal, the next instruction (after a modifying
 <a href="Glossary:nop-instructions">no-operation</a>  instruction, if one is
