@@ -3,7 +3,7 @@ We welcome all those interested to contribute to the development and improvement
 ## Project Structure
 Avida consists of several modules/sub-projects.
 
-* [Avida-Core Library](Development-:-avida-core)
+* [Avida-Core Library](Development-|-avida-core)
 * [Avida-Viewer Library](Development-:-avida-viewer)
 * [Avida2 Frontend](Development-:-avida2)
 * [The OS X/iOS Viewers](Development-:-viewer-macos)
