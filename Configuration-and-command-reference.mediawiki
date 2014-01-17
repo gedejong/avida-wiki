@@ -5,6 +5,7 @@
 * [[The Instruction Set]]
 * [[instset-heads.cfg]]
 * [[default-heads.org]]
+* [[The Analyze File]]
 
 ==Analyze Mode==
 * [[Guidelines to Analyze Mode]]
