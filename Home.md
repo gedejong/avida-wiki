@@ -12,16 +12,17 @@ More detailed materials:
 
 If you would like to contribute to this documentation, please create an account via the log-in link at the top-right of the page.
 
-**[New User Information](New-User-Information)**
+**[New User Information](wiki/New-User-Information)**
 
 ## General Information
-* [Overview](Overview)
-* [A Guided Tour of the Ancestor and its Hardware](Default Ancestor Guided Tour)
-* [Text Viewer](Text-Viewer)
-* [Configuration and Command Reference](Configuration-and-Command-Reference)
-* [Experiment and Analysis Guides](Experiment-and-Analysis-Guides)
+* [Overview](wiki/Overview)
+* [A Guided Tour of the Ancestor and its Hardware](wiki/Default-Ancestor-Guided-Tour)
+* [Text Viewer](wiki/Text-Viewer)
+* [Configuration and Command Reference](wiki/Configuration-and-Command-Reference)
+* [Experiment and Analysis Guides](wiki/Experiment-and-Analysis-Guides)
 
 
 ## Developer Resources
 * [Developers Guide](wiki/Developers-Guide)
-* [Avida 3 API](Avida-3-API)
+* [Getting Started](wiki/Developers-Guide-|-Getting-Started)
+* [Avida 3 API](wiki/Avida-3-API)
