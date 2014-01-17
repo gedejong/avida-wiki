@@ -1,24 +1,20 @@
 This document describes the structure of the classic virtual CPU and an example organism running on it.
 
-<h2>The Virtual CPU Structure</h2>
+==The Virtual CPU Structure==
 
 The virtual CPU, which is the default "body" or "hardware" of the organisms, contains the following set of components, (as further illustrated in the figure below).
 
-<ul>
-<li>A <strong style="color: #006666">memory</strong> that consists of a sequence of instructions, each associated with a set of flags to denote if the instruction has been executed, copied, mutated, etc.  Memory is treated as circular, such that execution will loop back to the first instruction after the last instruction has been executed</li>
-<li>An <strong style="color: #880088">instruction pointer</strong> (IP) that indicates the next site in the memory to be executed.</li>
-<li>Three <strong style="color: #FF8888">registers</strong> that can be used by the organism to hold data currently being manipulated.  These are often operated upon by the various instructions, and can contain arbitrary 32-bit integers.</li>
-<li>Two <strong style="color: #008800">stacks</strong> that are used for storage. The organism can theoretically store an arbitrary amount of data in the stacks, but for practical purposes we currently limit the maximum stack depth to ten.</li>
-<li>An <strong style="color: #CCCC00">input buffer</strong> and an <strong style="color: #CCCC00">output buffer</strong> that the organism uses to receive information, and return the processed results.</li>
-<li>A <strong style="color: #8888FF">Read-Head</strong>, a <strong style="color: #8888FF">Write-Head</strong>, and a <strong style="color: #8888FF">Flow-Head</strong> which are used to specify positions in the CPU's memory.  A copy command reads from the Read-Head and writes to the Write-Head.  Jump-type statements move the IP to the Flow-Head.</li>
-</ul>
+*A <strong style="color: #006666">memory</strong> that consists of a sequence of instructions, each associated with a set of flags to denote if the instruction has been executed, copied, mutated, etc.  Memory is treated as circular, such that execution will loop back to the first instruction after the last instruction has been executed
+*An <strong style="color: #880088">instruction pointer</strong> (IP) that indicates the next site in the memory to be executed.
+*Three <strong style="color: #FF8888">registers</strong> that can be used by the organism to hold data currently being manipulated.  These are often operated upon by the various instructions, and can contain arbitrary 32-bit integers.
+*Two <strong style="color: #008800">stacks</strong> that are used for storage. The organism can theoretically store an arbitrary amount of data in the stacks, but for practical purposes we currently limit the maximum stack depth to ten.</li>
+*An <strong style="color: #CCCC00">input buffer</strong> and an <strong style="color: #CCCC00">output buffer</strong> that the organism uses to receive information, and return the processed results.</li>
+*A <strong style="color: #8888FF">Read-Head</strong>, a <strong style="color: #8888FF">Write-Head</strong>, and a <strong style="color: #8888FF">Flow-Head</strong> which are used to specify positions in the CPU's memory.  A copy command reads from the Read-Head and writes to the Write-Head.  Jump-type statements move the IP to the Flow-Head.
 
-<div align="center">
-<img src="http://avida.devosoft.org/wp-content/uploads/2012/02/cpu2.gif" alt="" title="cpu2" width="593" height="476" class="alignnone size-full wp-image-185" /></a>
-</div>
+<img src="http://avida.devosoft.org/wp-content/uploads/2012/02/cpu2.gif" alt="" title="cpu2" width="593" height="476" class="alignnone size-full wp-image-185" />
 
 
-<h2>Instruction Set Configuration</h2>
+==Instruction Set Configuration==
 
 The instruction set in Avida is loaded on startup from a configuration file specified in the <kbd>avida.cfg</kbd> file.  This allows selection of different instruction sets without recompiling the source code, as well as allowing different sized instruction sets to be specified.  It is not possible to alter the behavior of individual instructions or add new instructions without recompiling Avida; such activities have to be done directly in the source code.
 
@@ -26,17 +22,9 @@ The available instructions are listed in the <kbd>inst_set.*</kbd> files with a 
 
 The instructions were created with three things in mind:
 
-<ul>
-<li>
-To be as complete as possible (both in a &quot;Turing complete&quot; sense -- that is, it can compute any computable function -- and, more practically, to ensure that simple operations only require a few instructions).
-</li>
-<li>
-For each instruction to be as robust and versatile as possible; all instructions should take an &quot;appropriate&quot; action in any situation where they can be executed.
-</li>
-<li>
-To have as little redundancy as possible between instructions. (Several instructions have been implemented that are redundant, but such combinations will typically not be turned on simultaneously for a run.)
-</li>
-</ul>
+*To be as complete as possible (both in a &quot;Turing complete&quot; sense -- that is, it can compute any computable function -- and, more practically, to ensure that simple operations only require a few instructions).
+*For each instruction to be as robust and versatile as possible; all instructions should take an &quot;appropriate&quot; action in any situation where they can be executed.
+*To have as little redundancy as possible between instructions. (Several instructions have been implemented that are redundant, but such combinations will typically not be turned on simultaneously for a run.)
 
 One major concept that differentiates this virtual assembly language from its real-world counterparts is in the additional uses of <code>nop</code> instructions (no-operation commands). These have no direct effect on the virtual CPU when executed, but often modify the effect of any instruction that precedes them.  In a sense, you can think of them as purely regulatory genes.  The default instruction set has three such <code>nop</code> instructions: <code>nop-A</code>, <code>nop-B</code>, and <code>nop-C</code>.
 
@@ -52,7 +40,7 @@ The label system used in Avida allows for an arbitrary number of nops.  By defau
 <code>BX&nbsp;==&nbsp;CX</code> by default, but if it is followed by a <code>nop-C</code> it will test if <code>CX&nbsp;==&nbsp;AX</code>.
 
 
-<h2>Instruction Set Reference</h2>
+==Instruction Set Reference==
 
 An abbreviated description of the 26 default instructions is below.
 
@@ -108,7 +96,7 @@ An abbreviated description of the 26 default instructions is below.
 </table>
 
 
-<h3>An Example Ancestor</h3>
+===An Example Ancestor===
 
 The following organism is stored in the file <kbd>organism.heads.15</kbd>, which you should find in the <kbd>support/config/misc/</kbd> directory.  This is a simplified version of <kbd>organism.default</kbd> and
 <kbd>organism.heads.100</kbd>, of lengths 50 and 100 respectively (each has additional instructions placed before the copy loop)
@@ -163,7 +151,7 @@ The next command, <code>if-label</code> (followed by a <code>nop-C</code> and a 
 This process will continue until all of the lines of code have been copied, and an offspring is born.
 
 
-<h3>An Example Logic Gene</h3>
+===An Example Logic Gene===
 
 Here is a short example program to demonstrate one way for an organism to perform the "OR" logic operation.  This time I'm only going to show the contents of the registers after each command because the functionality of the individual instructions should be clear, and the logic itself won't be helped much by a line-by-line explanation in English.
 
