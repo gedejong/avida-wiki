@@ -143,66 +143,66 @@ The instructions <code>nop-A</code> (<b>a</b>), <code>nop-B</code>
 (<b>b</b>), and <code>nop-C</code> (<b>c</b>) are no-operation
 instructions, and will not do
 anything when executed. They will, however, modifiy the behavior of the
-instruction preceeding it (by changing the <a href="glossary/CPU">CPU</a>
+instruction preceeding it (by changing the <a href="Glossary:CPU">CPU</a>
 component that it affects; see also
-<a href="glossary/Nop-Register-Notation">nop-register</a>  notation and
-<a href="glossary/Nop-Head-Notation">nop-head</a>  notation) or act as part
-of a <a href="glossary/Label">label</a>  to denote positions in the
-<a href="glossary/Genome">genome</a>.
+<a href="Glossary:Nop-Register-Notation">nop-register</a>  notation and
+<a href="Glossary:Nop-Head-Notation">nop-head</a>  notation) or act as part
+of a <a href="Glossary:Label">label</a>  to denote positions in the
+<a href="Glossary:Genome">genome</a>.
 
 
 <h3>(d) <code>if-n-equ</code></h3>
 
 This instruction compares the
-<a href="glossary/Nop-Register-Notation">?BX?</a>  register to its
-<a href="glossary/Complement-Label">complement</a>. If they are not
+<a href="Glossary:Nop-Register-Notation">?BX?</a>  register to its
+<a href="Glossary:Complement-Label">complement</a>. If they are not
 equal, the next instruction (after a modifying
-<a href="glossary/nop-instructions">no-operation</a>  instruction, if one is
+<a href="Glossary:nop-instructions">no-operation</a>  instruction, if one is
 present) is executed. If they are equal, that next instruction is skipped.
 
 
 <h3>(e) <code>if-less</code></h3>
 
-This instruction compares the <a href="glossary/Nop-Register-Notation">?BX?</a>
-register to its <a href="glossary/Complement-Label">complement</a>. If ?BX?
+This instruction compares the <a href="Glossary:Nop-Register-Notation">?BX?</a>
+register to its <a href="Glossary:Complement-Label">complement</a>. If ?BX?
 is the lesser of the pair, the next instruction (after a modifying
-<a href="glossary/nop-instructions">no-operation</a>  instruction, if one is
+<a href="Glossary:nop-instructions">no-operation</a>  instruction, if one is
 present) is executed. If it is greater or equal, then that next instruction is skipped.
 
 
 <h3>(f) <code>pop</code></h3>
 
 This instruction removes the top element from the active
-<a href="glossary/Stack">stack</a>, and places it into the
-<a href="glossary/Nop-Register-Notation">?BX?</a>  register.
+<a href="Glossary:Stack">stack</a>, and places it into the
+<a href="Glossary:Nop-Register-Notation">?BX?</a>  register.
 
 
 <h3>(g) <code>push</code></h3>
 
 This instruction reads in the contents of the
-<a href="glossary/Nop-Register-Notation">?BX?</a>  register, and places it
-as a new entry at the top of the active <a href="glossary/Stack">stack</a>.
+<a href="Glossary:Nop-Register-Notation">?BX?</a>  register, and places it
+as a new entry at the top of the active <a href="Glossary:Stack">stack</a>.
 The ?BX? register itself remains unchanged.
 
 
 <h3>(h) <code>swap-stk</code></h3>
 
-This instruction toggles the active <a href="glossary/Stack">stack</a>  in
-the <a href="glossary/CPU">CPU</a>. All other instructions that use a stack
+This instruction toggles the active <a href="Glossary:Stack">stack</a>  in
+the <a href="Glossary:CPU">CPU</a>. All other instructions that use a stack
 will always use the active one.
 
 
 <h3>(i) <code>swap</code></h3>
 
 This instruction swaps the contents of the
-<a href="glossary/Nop-Register-Notation">?BX?</a>  register with its
-<a href="glossary/Complement-Label">complement</a>.
+<a href="Glossary:Nop-Register-Notation">?BX?</a>  register with its
+<a href="Glossary:Complement-Label">complement</a>.
 
 
 <h3>(j) <code>shift-r</code></h3>
 
 This instruction reads in the contents of the
-<a href="glossary/Nop-Register-Notation">?BX?</a>  register, and shifts all
+<a href="Glossary:Nop-Register-Notation">?BX?</a>  register, and shifts all
 of the bits in that register to the right by one. In effect, it divides the value
 stored in the register by two, rounding down.
 
@@ -210,7 +210,7 @@ stored in the register by two, rounding down.
 <h3>(k) <code>shift-l</code></h3>
 
 This instruction reads in the contents of the
-<a href="glossary/Nop-Register-Notation">?BX?</a>  register, and shifts all
+<a href="Glossary:Nop-Register-Notation">?BX?</a>  register, and shifts all
 of the bits in that register to the left by one, placing a zero as the new rightmost
 bit, and trunkating any bits beyond the 32 maximum. For values that require fewer
 than 32 bits, it effectively multiplies that value by two.
@@ -219,74 +219,74 @@ than 32 bits, it effectively multiplies that value by two.
 <h3>(l) <code>inc</code> and (m) <code>dec</code></h3>
 
 These instructions read in the contents of the
-<a href="glossary/Nop-Register-Notation">?BX?</a> 
-<a href="glossary/Registers">register</a> and increment or decrement it by
+<a href="Glossary:Nop-Register-Notation">?BX?</a> 
+<a href="Glossary:Registers">register</a> and increment or decrement it by
 one.
 
 <h3>(n) <code>add</code> and (o) <code>sub</code></h3>
 
 These instructions read in the contents of the BX and CX
-<a href="glossary/Registers">registers</a> and either sums them together or
+<a href="Glossary:Registers">registers</a> and either sums them together or
 subtracts CX from BX (respectively). The result of this operation is then placed in
-the <a href="glossary/Nop-Register-Notation">?BX?</a>  register.
+the <a href="Glossary:Nop-Register-Notation">?BX?</a>  register.
 
 <h3>(p) <code>nand</code></h3>
 
 This instruction reads in the contents of the BX and CX
-<a href="glossary/Registers">registers</a>  (each of which are 32-bit
-numbers) and performs a <a href="glossary/Bitwise">bitwise</a>  nand
+<a href="Glossary:Registers">registers</a>  (each of which are 32-bit
+numbers) and performs a <a href="Glossary:Bitwise">bitwise</a>  nand
 operation on them. The result of this operation is placed in the
-<a href="glossary/Nop-Register-Notation">?BX?</a>  register. Note that
-this is the only <a href="glossary/Logic">logic</a>  operation provided in
+<a href="Glossary:Nop-Register-Notation">?BX?</a>  register. Note that
+this is the only <a href="Glossary:Logic">logic</a>  operation provided in
 the basic Avida instruction set.
 
 
 <h3>(q) <code>IO</code></h3>
 
 This is the input/output instruction. It takes the contents of the
-<a href="glossary/Nop-Register-Notation">?BX?</a>
-<a href="glossary/Registers">register</a>  and outputs it, checking it
-for any <a href="glossary/Tasks">tasks</a>  that may have been performed.
-It will then place a new <a href="glossary/Input-Output">input</a> into ?BX?.
+<a href="Glossary:Nop-Register-Notation">?BX?</a>
+<a href="Glossary:Registers">register</a>  and outputs it, checking it
+for any <a href="Glossary:Tasks">tasks</a>  that may have been performed.
+It will then place a new <a href="Glossary:Input-Output">input</a> into ?BX?.
 
 
 <h3>(r) <code>h-alloc</code></h3>
 
-This instruction allocates additional <a href="glossary/Memory">memory</a>
+This instruction allocates additional <a href="Glossary:Memory">memory</a>
 for the organism up to the maximum it is allowed to use for its offspring.
 
 
 <h3>(s) <code>h-divide</code></h3>
 
 This instruction is used for an organism to divide off an finnished offspring. The
-original organism keeps the state of its <a href="glossary/Memory">memory</a>
-up until the <a href="glossary/Heads">read-head</a>. The offspring's memory is
+original organism keeps the state of its <a href="Glossary:Memory">memory</a>
+up until the <a href="Glossary:Heads">read-head</a>. The offspring's memory is
 initialized to everything between the read-head and the
-<a href="glossary/Heads">write-head</a>. All memory past the write-head is
+<a href="Glossary:Heads">write-head</a>. All memory past the write-head is
 removed entirely.
 
 
 <h3>(t) <code>h-copy</code></h3>
 
 This instruction reads the contents of the organism's
-<a href="glossary/Memory">memory</a>  at the position of the
-<a href="glossary/Heads">read-head</a>, and copy that to the position of the
-<a href="glossary/Heads">write-head</a>. If a non-zero copy mutation rate is
+<a href="Glossary:Memory">memory</a>  at the position of the
+<a href="Glossary:Heads">read-head</a>, and copy that to the position of the
+<a href="Glossary:Heads">write-head</a>. If a non-zero copy mutation rate is
 set, a test will be made based on this probability to determine if a
-<a href="glossary/Mutation">mutation</a>  occurs. If so, a random instruction
+<a href="Glossary:Mutation">mutation</a>  occurs. If so, a random instruction
 (chosen from the full set with equal probability) will be placed at the write-head
 instead.
 
 
 <h3>(u) <code>h-search</code></h3>
 
-This instruction will read in the <a href="glossary/Label">label</a>
+This instruction will read in the <a href="Glossary:Label">label</a>
 the follows it, and find the location of a
-<a href="glossary/Complement-Label">complement</a> label in the code.
-The BX <a href="glossary/Registers">register</a> will be set to the distance
+<a href="Glossary:Complement-Label">complement</a> label in the code.
+The BX <a href="Glossary:Registers">register</a> will be set to the distance
 to the complement from the current position of the
-<a href="glossary/Heads">instruction-pointer</a>, and the CX register will
-be set to the size of the label. The <a href="glossary/Heads">flow-head</a>
+<a href="Glossary:Heads">instruction-pointer</a>, and the CX register will
+be set to the size of the label. The <a href="Glossary:Heads">flow-head</a>
 will also be placed at the beginning of the complement label. If no label follows,
 both BX and CX will be set to zero, and the flow-head will be placed on the instruction
 immediatly following the h-search.
@@ -294,30 +294,30 @@ immediatly following the h-search.
 
 <h3>(v) <code>mov-head</code></h3>
 
-This instruction will cause the <a href="glossary/Nop-Head-Notation">?IP?</a>
-to jump to the position in <a href="glossary/Memory">memory</a>  of the
-<a href="glossary/Heads">flow-head</a>.
+This instruction will cause the <a href="Glossary:Nop-Head-Notation">?IP?</a>
+to jump to the position in <a href="Glossary:Memory">memory</a>  of the
+<a href="Glossary:Heads">flow-head</a>.
 
 
 <h3>(w) <code>jmp-head</code></h3>
 
 This instruction will read in the value of the CX
-<a href="glossary/Registers">register</a>, and the move the
-<a href="glossary/Nop-Head-Notation">?IP?</a> by that fixed amount through
-the organism's <a href="glossary/Memory">memory</a>.
+<a href="Glossary:Registers">register</a>, and the move the
+<a href="Glossary:Nop-Head-Notation">?IP?</a> by that fixed amount through
+the organism's <a href="Glossary:Memory">memory</a>.
 
 
 <h3>(x) <code>get-head</code></h3>
 
 This instruction will copy the position of the
-<a href="glossary/Nop-Head-Notation">?IP?</a> into the CX
-<a href="glossary/Registers">register</a>.
+<a href="Glossary:Nop-Head-Notation">?IP?</a> into the CX
+<a href="Glossary:Registers">register</a>.
 
 
 <h3>(y) <code>if-label</code></h3>
 
-This instruction reads in the <a href="glossary/Label">label</a> that
-follows it, and tests if its <a href="glossary/Complement-Label">complement</a>
+This instruction reads in the <a href="Glossary:Label">label</a> that
+follows it, and tests if its <a href="Glossary:Complement-Label">complement</a>
 label was the most recent series of instructions copied. If so, it executed the next
 instruction, otherwise it skips it. This instruction is commonly used for an organism to
 determine when it has finished producing its offspring.
@@ -325,6 +325,6 @@ determine when it has finished producing its offspring.
 
 <h3>(z) <code>set-flow</code></h3>
 
-This instruction moves the <a href="glossary/Heads">flow-head</a> to the
-<a href="glossary/Memory">memory</a>  position denoted in the
-<a href="glossary/Nop-Register-Notation">?CX?</a>  register.
+This instruction moves the <a href="Glossary:Heads">flow-head</a> to the
+<a href="Glossary:Memory">memory</a>  position denoted in the
+<a href="Glossary:Nop-Register-Notation">?CX?</a>  register.
