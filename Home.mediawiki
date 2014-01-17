@@ -1,0 +1,32 @@
+Avida is a free, open source software platform for conducting and analyzing experiments with self-replicating and evolving computer programs. It provides detailed control over experimental settings and protocols, a large array of measurement tools, and sophisticated methods to analyze and post-process experimental data.
+
+The following articles provide a good introduction to Avida:
+* [http://www.carlzimmer.com/articles/2005.php?subaction=showfull&id=1177184710&archive=&start_from=&ucat=8& Testing Darwian] by Carl Zimmer (Cover story of Feb 2005 Discover Magazine).
+* [http://myxo.css.msu.edu/lenski/pdf/2001,%20Nature,%20Lenski,%20twice%20as%20natural.pdf Twice as Natural] by Richard Lenski (2001)
+* [http://www.microbeworld.org/index.php?option=com_content&view=article&id=784:mts59-charles-ofria-&catid=37:meet-the-scientist&Itemid=155 Meet the Scientist] podcast interview of Charles Ofria by Carl Zimmer (2010)
+
+More detailed materials:
+* [http://www.cse.msu.edu/~ofria/pubs/2009AvidaIntro.pdf Avida: A Software Platform for Research in Computational Evolutionary Biology] by C. Ofria, D.M. Bryson, and C. Wilke (2009).
+* The latest documentation supplied with Avida (found in the avida-core directory of the source folder)
+* The contents of this Wiki
+
+If you would like to contribute to this documentation, please create an account via the log-in link at the top-right of the page.
+
+'''[[New User Information]]'''
+
+==General Information==
+* [[Overview]]
+* [[Default Ancestor Guided Tour|A Guided Tour of the Ancestor and its Hardware]]
+* [[Text Viewer|The Text Viewer]]
+* [[Configuration and Command Reference]]
+* [[Experiment and Analysis Guides]]
+
+==F.A.Q.==
+* ''What should I do if I find incorrect documentation?''
+
+Ideally, create a log-in and fix it yourself!  Your other option is to hit the "Issue Trac" tab on the top of the page and create a ticket; set the "Component" to "documentation" and be as clear and precise as possible about what is wrong, including why you know it is wrong.
+
+==Developer Resources==
+* [http://avida.devosoft.org/devguide/ Developers Guide]
+* [http://avida.devosoft.org/devguide/setup/ Getting Started]
+* [[Avida 3 API]]
