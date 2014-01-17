@@ -23,6 +23,6 @@ If you would like to contribute to this documentation, please create an account 
 
 
 ==Developer Resources==
-* [http://avida.devosoft.org/devguide/ Developers Guide]
+* [[Developers Guide]]
 * [http://avida.devosoft.org/devguide/setup/ Getting Started]
 * [[Avida 3 API]]
