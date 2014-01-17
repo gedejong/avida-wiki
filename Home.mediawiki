@@ -21,10 +21,6 @@ If you would like to contribute to this documentation, please create an account 
 * [[Configuration and Command Reference]]
 * [[Experiment and Analysis Guides]]
 
-==F.A.Q.==
-* ''What should I do if I find incorrect documentation?''
-
-Ideally, create a log-in and fix it yourself!  Your other option is to hit the "Issue Trac" tab on the top of the page and create a ticket; set the "Component" to "documentation" and be as clear and precise as possible about what is wrong, including why you know it is wrong.
 
 ==Developer Resources==
 * [http://avida.devosoft.org/devguide/ Developers Guide]
