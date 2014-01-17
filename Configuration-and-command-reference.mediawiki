@@ -2,6 +2,7 @@
 * [[avida.cfg|avida.cfg: The Avida Configuration File]]
 * [[The Events File]]
 * [[The Environment File]]
+* [[The Instruction Set]]
 * [[instset-heads.cfg]]
 * [[default-heads.org]]
 
