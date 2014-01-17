@@ -23,5 +23,5 @@ If you would like to contribute to this documentation, please create an account 
 
 
 ## Developer Resources
-* [Developers Guide](Developers-Guide)
+* [Developers Guide](wiki/Developers-Guide)
 * [Avida 3 API](Avida-3-API)
