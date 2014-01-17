@@ -24,5 +24,5 @@ If you would like to contribute to this documentation, please create an account 
 
 ## Developer Resources
 * [Developers Guide](wiki/Developers-Guide)
-* [Getting Started](wiki/Developers-Guide-|-Getting-Started)
+* [Getting Started](wiki/Development-|-Getting-Started)
 * [Avida 3 API](wiki/Avida-3-API)
