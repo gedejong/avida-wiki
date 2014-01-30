@@ -67,6 +67,13 @@ The <i>collect-specific</i> instruction is not nop-specified (and so should be c
 <pre>COLLECT_SPECIFIC_RESOURCE 0</pre>
 This setting determines which resource the <i>collect-specific</i> instruction affects.  (Remember that resources are numbered from 0 in the order they appear in the environment file.)  It also specifies which resource should be added to injected or newborn organisms if non-zero amounts are specified by RESOURCE_GIVEN_ON_INJECT or RESOURCE_GIVEN_AT_BIRTH.  It should not be given a value outside of the range of resource ids.
 
+<h3> collect-specific-ratio </h3>
+Rather than collecting a single specific resource, the <i>collect-specific-ratio</i> instruction collects some amount of all resources. By default, it collects one unit of each resource. A different ratio for a given resource can be specified with the config option NON_1_RESOURCE_RATIOS.
+<pre><nowiki>NON_1_RESOURCE_RATIOS resource_index1:amount, resource_index2:amount</nowiki></pre>
+Every time the <i>collect-specific-ratio</i> instruction is executed, the organism executing it collects one of each resource not mentioned in the config setting and the amount specified after the colon for each other resource. (Remember that resources are numbered from 0 in the order they appear in the environment file - resource_index should not be a value outside of the range of resource ids). For instance, a config setting like this:
+<pre><nowiki>NON_1_RESOURCE_RATIOS 1:2, 3:.5</nowiki></pre>
+Would result in the organism collecting 1 unit of resource 0, 2 units of resource 1, .5 units of resource 3, and 1 unit of any additional resources.
+
 <h2> Using internal resources to complete reactions </h2>
 <div align="center">
 <img src="images/inres_using.gif" alt="An organism will use internal resources to complete reactions when there is more internal resource than available environmental resource." />
