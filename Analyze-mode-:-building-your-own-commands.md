@@ -1,13 +1,14 @@
 One really useful feature in analyze mode is the ability for the user to construct a variety of their own commands without modifying the source code. This is done with the FUNCTION command. For example, if you know you will always need a file called lineage.html with very specific information in it, you might write a helper command for yourself as follows:
 
-<code>  FUNCTION MY_HTML_LINEAGE  # arg1=run_directory
+<pre>
+  FUNCTION MY_HTML_LINEAGE  # arg1=run_directory
     PURGE_BATCH
     LOAD $1/detail-100000.spop
     FIND_LINEAGE num_cpus
     RECALCULATE
     DETAIL $1/lineage.html depth parent_dist length fitness html.sequence
   END
-</code>
+</pre>
 
 This works identically to how we found lineages and printed their data in the section above. Only this time, it has created the new command called MY_HTML_LINEAGE that you can use anytime thereafter. Arguments to functions work similar to variables, but they are numbers instead of letters. Thus $1 translates to the first arguments, $2 becomes the second, and so on. You are limited to 9 arguments at this point, but that should be enough for most tasks. $0 is the name of the function you are running, in case you ever need to use that.
 
