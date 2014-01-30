@@ -8,13 +8,15 @@ But later on in the code, how does Avida know when you type an i if you really w
 
 There are a few different commands that allow you to manipulate a variable's value, and sometimes execute a section of code multiple times based off of each of the possible values. Here is one example:
 
-<code>  FORRANGE i 100 199
+<pre>
+  FORRANGE i 100 199
     SET d /home/charles/dev/avida/runs/evo-neut/evo_neut_$i
     PURGE_BATCH
     LOAD $d/detail-100000.spop
     RECALCULATE
     DETAIL $d/detail.dat update length fitness sequence
-  END</code>
+  END
+</pre>
 
 The FORRANGE command runs the contents of the loop once for each possible value in the range, setting the variable i to each of these values in turn. Thus the first time through the loop, 'i' will be equal to the value '100', then '101', '102', all the way up to '199'. In this particular case, we have 100 runs (numbered 100 through 199) that we want to work with.
 
