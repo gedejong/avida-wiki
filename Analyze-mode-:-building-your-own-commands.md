@@ -14,10 +14,11 @@ This works identically to how we found lineages and printed their data in the se
 
 You may be interested in also using functions in conjunction with the SYSTEM command. Anything you type as arguments to this command gets run on the command line, so you can make functions to do anything that could otherwise be done were you at the shell prompt. For example, imagine that you were going to use a lot of compressed files in your analysis that you would first need to uncompress. You might right a function like:
 
-<code>  FUNCTION UNZIP   # Arg1=filename
+<pre>
+  FUNCTION UNZIP   # Arg1=filename
     SYSTEM gunzip $1
   END
-</code>
+</pre>
 
 This is a shorter example than you might typically want to write a function for, but it does get the point across. This would allow you to just type UNZIP  whenever you needed to uncompress something.
 
