@@ -1,6 +1,7 @@
 Quite often, the portion of an Avida run that we will be most interested in is the lineage from the final dominant genotype back to the original ancestor. As such, there are tools in Avida to get at this information.
 
-<code>  FORRANGE i 100 199
+<pre>
+  FORRANGE i 100 199
     SET d /home/charles/dev/avida/runs/evo-neut/evo_neut_$i
     PURGE_BATCH
     LOAD $d/detail-100000.spop
@@ -8,7 +9,7 @@ Quite often, the portion of an Avida run that we will be most interested in is t
     RECALCULATE
     DETAIL lineage.$i.html depth parent_dist length fitness html.sequence
   END
-</code>
+</pre>
 
 This program looks very similar to one in the <a href="http://avida.devosoft.org/wiki/documentation/configuration-and-command-reference/sample-programs-from-analyze-mode/using-variables/" title="Using Variables">Using Variables</a> example. The first four lines are actually identical. A .spop detail file contains all of the genotypes that were currently alive in the population at the time it was printed, and by default all of the genotypes that are direct ancestors of those that were still alive. (If you used the save_historic=1 option when you saved this population, the .spop contains only the currently-alive genomes, and you will not find much of a lineage!)
 
