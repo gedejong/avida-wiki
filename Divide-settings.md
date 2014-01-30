@@ -3,7 +3,7 @@
 <tbody>
 <tr class="important">
 <td valign="top"><strong><code>OFFSPRING_SIZE_RANGE</code></strong></td>
-<td>This is the maximal difference in genome size between a parent and offspring. The default of 2.0 means that the genome of the child must be between one-half and twice the length of the parent. This it to prevent out-of-control size changes. Setting this to 1.0 will ensure fixed length organisms (as long as you also change the other settings detailed in <a title="How to Set Up Fixed-Length Organisms" href="http://avida.devosoft.org/wiki/documentation/configuration-and-command-reference/fixed-length-organisms/">How to Set Up Fixed-Length Organisms</a>).</td>
+<td>This is the maximal difference in genome size between a parent and offspring. The default of 2.0 means that the genome of the child must be between one-half and twice the length of the parent. This it to prevent out-of-control size changes. Setting this to 1.0 will ensure fixed length organisms (as long as you also change the other settings detailed in <a title="How to Set Up Fixed-Length Organisms" href="https://github.com/devosoft/avida/wiki/Setting-up-fixed-length-organisms">How to Set Up Fixed-Length Organisms</a>).</td>
 </tr>
 <tr>
 <td valign="top"><strong><code> MIN_COPIED_LINES <br />MIN_EXE_LINES </code></strong></td>
