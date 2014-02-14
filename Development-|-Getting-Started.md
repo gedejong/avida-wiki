@@ -55,6 +55,4 @@ The Avida project master repository has been organized in the structure describe
 There are two main ways to contribute code changes to the repositories of the Avida project. The community at large is encouraged to fork the repositories on <a href="http://github.com/devosoft/avida/">GitHub</a> and to submit pull requests as appropriate. More details about using GitHub is available on their site.
 
 Core developers who have been granted direct push access will need to utilize the authenticated remote repository path. The authenticated repository is <code>gitolite@avida.devosoft.org:avida.git</code>. If you are working from a standard clone of the source code, you may update your <em>push</em> URLs with the following commands:
-<pre>$ git remote set-url --push origin gitolite@avida.devosoft.org:avida.git
-$ cd avida-core
-$ git remote set-url --push origin gitolite@avida.devosoft.org:avida-core.git</pre>
+<pre>$ git remote set-url --push origin git@github.com:devosoft/avida.git</pre>
