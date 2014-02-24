@@ -1,6 +1,6 @@
 ==Main Configuration Files==
 * [[avida.cfg|avida.cfg: The Avida Configuration File]]
-* [[The Events File]]
+* [[Events-file|The Events File]]
 * [[The Environment File]]
 * [[The Instruction Set]]
 * [[instset-heads.cfg]]
