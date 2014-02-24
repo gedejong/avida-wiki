@@ -6,3 +6,4 @@ This page is a list of random trivia that you probably wish you would have known
 * The default behavior for what happens when demes divide (DEMES_DIVIDE_METHOD=0) is for *both* the source and target deme to be replaced.
 * Selecting to leave the state of the mother untouched (DIVIDE_METHOD=0) in fact only leaves part of the mother's state untouched. Specifically, it leaves the pointers and register values intact. Almost everything else is reset, though.
 * If you have a limited spatial resource with no diffusion that is inflowing on a part of the grid with no organisms (an empty deme for example), it's quantity of resource in the environment doesn't get reported, despite the rate of inflow. (AWC -- 3/29/12)
+* When offspring are allocated, their genomes are initialized to be entirely nop-A instructions. Thus, the count of nop-A across all genomes does not reflect the frequency with which nop-A is being used.
