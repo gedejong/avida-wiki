@@ -861,7 +861,21 @@ event, and resets the state of all organisms.</li>
 	<li><strong><a name="ReplaceFromGermline"></a>ReplaceFromGermline</strong>
 <em>[double p(kill)=0.0 [int update_cell_data=0]]</em></li>
 	<li><strong><a name="ReplicateDemes"></a>ReplicateDemes</strong>
-<em>[string trigger=full_deme]</em></li>
+<em>[string trigger=full_deme]</em>
+        <p>Tests all demes in a population and replicates those wherein a specific trigger condition has been met.  The available triggers are:
+           <ul>
+             <li><i>full_deme</i>: All deme cells are occupied by organisms.</li>
+             <li><i>corners</i>: The upper-left and lower-right cells in a deme are occupied</li>
+             <li><i>deme_age</i>: The deme has reached the age specified in ???</li>
+             <li><i>birth-count</i>: The deme has reached the number of births specified in ???</li>
+             <li><i>sat-mov-pred</i>: ???</li>
+             <li><i>events-killed</i>: ???</li>
+             <li><i>sat-msg-pred</i>: ???</li>
+             <li><i>sat-deme-predicate</i>: ???</li>
+             <li><i>perf-reactions</i>: ???</li>
+             <li><i>consume-res</i>: The deme has consumed a total number of resources specified in ???</li>
+           </ul>
+        </li>
 	<li><strong><a name="ResetDemes"></a>ResetDemes</strong>
 <em>No Arguments</em></li>
 	<li><strong><a name="SerialTransfer"></a>SerialTransfer</strong>
