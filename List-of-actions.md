@@ -866,14 +866,14 @@ event, and resets the state of all organisms.</li>
            <ul>
              <li><i>full_deme</i>: All deme cells are occupied by organisms.</li>
              <li><i>corners</i>: The upper-left and lower-right cells in a deme are occupied</li>
-             <li><i>deme_age</i>: The deme has reached the age specified in ???</li>
-             <li><i>birth-count</i>: The deme has reached the number of births specified in ???</li>
+             <li><i>deme_age</i>: The deme has reached the age specified as DEMES_MAX_AGE in avida.cfg</li>
+             <li><i>birth-count</i>: The deme has reached the number of births specified as DEMES_MAX_BIRTHS in avida.cfg</li>
              <li><i>sat-mov-pred</i>: ???</li>
              <li><i>events-killed</i>: ???</li>
              <li><i>sat-msg-pred</i>: ???</li>
              <li><i>sat-deme-predicate</i>: ???</li>
              <li><i>perf-reactions</i>: ???</li>
-             <li><i>consume-res</i>: The deme has consumed a total number of resources specified in ???</li>
+             <li><i>consume-res</i>: The deme has consumed a total number of resources specified as RES_FOR_DEME_REP in avida.cfg</li>
            </ul>
         </p>
         </li>
