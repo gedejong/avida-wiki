@@ -875,6 +875,7 @@ event, and resets the state of all organisms.</li>
              <li><i>perf-reactions</i>: ???</li>
              <li><i>consume-res</i>: The deme has consumed a total number of resources specified in ???</li>
            </ul>
+        </p>
         </li>
 	<li><strong><a name="ResetDemes"></a>ResetDemes</strong>
 <em>No Arguments</em></li>
