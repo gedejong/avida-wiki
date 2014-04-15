@@ -14,7 +14,7 @@ Avida consists of several modules/sub-projects.
 
 
 ## Mini Tutorials
-* [A Conceptual Introduction to C++](Development-|-Tutorial-|-C++-Intro)
+* [A Conceptual Introduction to C++](Development-|-Tutorial-|-C-Plus-Plus-Intro)
 * [Guide to the Death/Birth Cycle](Development-|-Tutorial-|-Birth-Death-Cycle)
 * [Guide to an Avida Organism Life Cycle](Development-|-Tutorial-|-Life-Cycle)
 * [The Building Blocks of the Virtual CPU](Development-|-Tutorial-|-Genome)
