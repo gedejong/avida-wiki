@@ -19,23 +19,7 @@ objects is a <strong>class</strong>; an object is a single instance of a class.
 <p>
 For example, in Avida one of the most important classes is called <code>cOrganism</code>
 -- it is the class that all organism objects belong to. Here is an abbreviated
-version of the cOrganism class declaration (explained further below), color
-coded to aide understanding.
-</p>
-<div align="center">
-<table width="90%">
-<tr>
-  <td width="50%">
-    <span class="comment"><strong>Comments</strong> are in BROWN</span>
-    <br /><span class="method">Names of <strong>methods</strong> are in GREEN</span>
-  </td>
-  <td width="50%">
-    <span class="class">Names of <strong>classes</strong> are in RED</span>
-    <br /><span class="object">Names of <strong>objects</strong> are in BLUE</span>
-  </td>
-</tr>
-</table>
-</div>
+version of the cOrganism class declaration (explained further below).
 
 <pre>
 class <span class="class">cOrganism</span>
