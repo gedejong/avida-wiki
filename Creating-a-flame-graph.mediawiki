@@ -12,7 +12,7 @@ flamegraph.py is a Python script found in source/utils/hist_map/ which uses matp
 
 To run it:
 
-<code>python flamegraph.py &lt;output file&gt; &lt;column # of phylogenetic depth&gt; &lt;column # of number of organisms&gt; &lt;files&gt; </code>          
+<code>python flamegraph.py <output file> <column # of phylogenetic depth> <column # of number of organisms> <files> </code>          
 
 matplotlib can produce graphs in png, pdf, ps, eps, or svg format; choose the extension of your output file appropriately.
 
@@ -35,7 +35,7 @@ If you have not already compiled hist_map, do so. It is located in source/utils/
 
 Now run it:
 
-<code>hist_map &lt;column # of phylogenetic depth&gt; &lt;column # of number of organisms&gt; &lt;files&gt; &gt; &lt;output file&gt;</code>
+<code>hist_map <column # of phylogenetic depth> <column # of number of organisms> <files> <output file> </code>
 
 In the current default Avida, the population detail files (.spop) use column 14 for phylogenetic depth and column 5 for number of organisms. (Older Avida population detail files with the .pop extension use columns 12 and 4, respectively.)  Additionally, you will want to ensure that hist_map reads the detail files the correct order. Altogether, your command should look something like this:
 
