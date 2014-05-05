@@ -94,6 +94,7 @@ actions, along with detailed sections for each them.
 <a href="#Inject">Inject</a>
 <a href="#InjectAll">InjectAll</a>
 <a href="#InjectAllRandomRepro">InjectAllRandomRepro</a>
+<a href="#InjectCanvas">InjectCanvas</a>
 <a href="#InjectDemes">InjectDemes</a>
 <a href="#InjectDemesFromNest">InjectDemesFromNest</a>
 <a href="#InjectDemesRandom">InjectDemesRandom</a>
@@ -731,6 +732,8 @@ have an uninitialized merit, and be marked as liniage id 0.</li>
 into <em>all</em> cells in the population.</li>
 	<li><strong><a name="InjectAllRandomRepro"></a>InjectAllRandomRepro</strong>
 <em>&lt;int length&gt; [double merit=-1] [int lineage_label=0] [double neutral_metric=0]</em></li>
+	<li><strong><a name="InjectCanvas"></a>InjectCanvas</strong>
+<em>[string fname="START_ORGANISM"] [int canvas_id=0] [int canvas_x=0] [int canvas_y=0] [int group_id=-1] [int forager_type=-1] [double merit=-1] [int lineage_label=0] [double neutral_metric=0]</em></li>
 	<li><strong><a name="InjectDemes"></a>InjectDemes</strong>
 <em>[string fname="START_ORGANISM"] [double merit=-1] [int lineage_label=0] [double neutral_metric=0]</em></li>
 	<li><strong><a name="InjectDemesFromNest"></a>InjectDemesFromNest</strong>
