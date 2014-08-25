@@ -3,7 +3,7 @@ Avida is a free, open source software platform for conducting and analyzing expe
 The following articles provide a good introduction to Avida:
 * [Testing Darwian](http://www.carlzimmer.com/articles/2005.php?subaction=showfull&id=1177184710&archive=&start_from=&ucat=8&) by Carl Zimmer (Cover story of Feb 2005 Discover Magazine).
 * [Twice as Natural](http://myxo.css.msu.edu/lenski/pdf/2001,%20Nature,%20Lenski,%20twice%20as%20natural.pdf) by Richard Lenski (2001)
-* [Meet the Scientist](http://www.microbeworld.org/index.php?option=com_content&view=article&id=784:mts59-charles-ofria-&catid=37:meet-the-scientist&Itemid=1550 podcast interview of Charles Ofria by Carl Zimmer (2010)
+* [Meet the Scientist](http://www.microbeworld.org/index.php?option=com_content&view=article&id=784:mts59-charles-ofria-&catid=37:meet-the-scientist&Itemid=1550) podcast interview of Charles Ofria by Carl Zimmer (2010)
 
 More detailed materials:
 * [About Digital Evolution](wiki/About)
