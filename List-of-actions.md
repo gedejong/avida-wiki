@@ -1427,8 +1427,8 @@ are supplied, action will toggle between NORMAL and ON.Levels: SILENT, NORMAL, O
 	<li><strong><a name="SaveFlameData"></a>SaveFlameData</strong>
 <em>[string filename="flame"]</em></li>
 	<li><strong><a name="SavePopulation"></a>SavePopulation</strong>
-<em>[string filename="detail"] [boolean save_historic=1] [boolean save_groups=0] [boolean save_avatars=0] [boolean save_rebirth=0] [boolean save_canvas=0]</em>Save the genotypes and lots of statistics about the population to the
-file specified; if not filename is given, use the name
+<em>[string filename="detail"] [boolean save_historic=1] [boolean save_groups=0] [boolean save_avatars=0] [boolean save_rebirth=0] </em>Save the genotypes and lots of statistics about the population to the
+file specified; if no filename is given, use the name
 <kbd>detail-<em>update</em>.pop</kbd>. As with clones, the update number
 allows a single event to produce many detail files. The details are used
 to collect crossection data about the population.
@@ -1442,7 +1442,7 @@ The save_historic option determines whether the action saves the full history fo
   parent_ft, parent is teacher, parent merit (out to 4 dec places)
   Using save_rebirth will save all possible columns (i.e. will save all save_groups + all save_avatars data even if
   those flags are off).
-Save canvas will save information about the canvas location, birth location, and canvas number used by the orgs. If save_canvas is true, save_avatars will be set to false, save_groups will be set to true, and save_rebirth will be set to true.
+Save canvas [deprecated] will save information about the canvas location, birth location, and canvas number used by the orgs. If save_canvas is true, save_avatars will be set to false, save_groups will be set to true, and save_rebirth will be set to true.
 </li>
 </ul>
 &nbsp;
