@@ -896,7 +896,9 @@ argument determines whether only living organisms are retainted.</li>
 	<li><strong><a name="SeverGridRow"></a>SeverGridRow</strong>
 <em>[int row_id=-1] [int min_col=0] [int max_col=-1]</em>Remove the connections between cells along a row in an Avida grid.</li>
 	<li><strong><a name="SwapCells"></a>SwapCells</strong>
-<em>&lt;int cell_id1&gt; &lt;int cell_id2&gt;</em></li>
+<em>&lt;int cell_id1&gt; &lt;int cell_id2&gt;</em> Swaps the two organisms and all associated information (such as previous inputs). Doesn't work with identical cell ids.</li>
+	<li><strong><a name="SwapRandomCells"></a>SwapRandomCells</strong>
+<em>&lt;int number swaps&gt;</em> Swaps the specified number of pairs of randomly selected organisms. If randomly selected ids happen to be the same, nothing happens that iteration. </li>
 	<li><strong><a name="Synchronization"></a>Synchronization</strong>
 <em>No Arguments</em></li>
 	<li><strong><a name="TherapyDecayDemeResource"></a>TherapyDecayDemeResource</strong>
