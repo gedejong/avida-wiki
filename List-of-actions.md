@@ -360,6 +360,7 @@ actions, along with detailed sections for each them.
 <a href="#SeverGridRow">SeverGridRow</a><br>
 <a href="#StopFastForward">StopFastForward</a><br>
 <a href="#SwapCells">SwapCells</a><br>
+<a href="#SwapRandomCells">SwapRandomCells</a><br>
 <a href="#Synchronization">Synchronization</a><br>
 <a href="#TestDominant">TestDominant</a><br>
 <a href="#TherapyDecayDemeResource">TherapyDecayDemeResource</a><br>
