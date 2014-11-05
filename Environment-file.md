@@ -753,6 +753,13 @@ following requisites (in any combination) are possible:
   </td>
   <td>0</td>
 </tr>
+<tr>
+  <td class="resall">parasite_only</td>
+  <td>
+    This command only allows parasites to get credit for the reaction, not host organisms.
+  </td>
+  <td>False</td>
+</tr>
 </table>
 <p>&nbsp;</p>
 </div>
