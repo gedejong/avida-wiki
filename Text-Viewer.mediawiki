@@ -20,9 +20,9 @@
 <p>Available key strokes are shown on the screen (note that the number of keys at the top screen will vary based on the width of the screen):</p>
 <p><img class="aligncenter size-full wp-image-274" src="images/Text_View_Navigation.jpg" alt="Map Screen shows each organism as colored charecter" width="650" height="650" /></p>
 <p>Draft Documentation based on: "Avida User's Manual" C. Ofria, C.T. Brown, and C. Adami in <em>Introduction to Artificial Life</em> by C. Adami:</p>
-<p>For the most part the text interface to avida is simple and straightforward to use; most of the options available are listed on the screen For example at all times there is a menu bar at the top of the screen which lists the current update and the keys to press to go to any of the most used avida screens. These sections further explain each screen:</p>
+<p>For the most part the text interface to Avida is simple and straightforward to use; most of the options available are listed on the screen. For example at all times there is a menu bar at the top of the screen which lists the current update and the keys to press to go to any of the most used Avida screens. These sections further explain each screen:</p>
 <h2>The Stats Screen</h2>
-<p>This screen displays all of the current statistics about the ongoing run A typical snapshot of the screen looks like this:</p>
+<p>This screen displays all of the current statistics about the ongoing run. A typical snapshot of the screen looks like this:</p>
 <p><img class="aligncenter size-full wp-image-276" src="images/Text_View_Stats_Mode.jpg" alt="Map Screen shows each organism as colored charecter" width="565" height="564" /></p>
 <p>Starting at the upper left column of the screen the first block of statistics describes the current state of the soup. These statistics are defined as follows:</p>
 <ul>
@@ -30,18 +30,18 @@
 <li>Breed True is the total number of organisms currently in the soup which are exact copies of their parents</li>
 <li>Parasites is the total number of organisms which have displayed parasitic behavior (i.e. the number which have executed instructions outside of their own memory).</li>
 <li>Energy is the log of the ratio between the fitness of the dominant genotype and the average fitness in the soup.</li>
-<li>Max Fitness is the highest fitness which can be found in the soup During equilibrium this will usually be approximately the same as the fitness of the dominant genotype.</li>
-<li>Max Merit is the highest merit which can be found in the soup Since this gives no indication as to the replication abilities of this organism it is typically not a very revealing quantity.</li>
+<li>Max Fitness is the highest fitness which can be found in the soup. During equilibrium this will usually be approximately the same as the fitness of the dominant genotype.</li>
+<li>Max Merit is the highest merit which can be found in the soup. Since this gives no indication as to the replication abilities of this organism it is typically not a very revealing quantity.</li>
 </ul>
-<p>To the right of the soup status column we have some information about the dominant genotype This section simply lists the name of this genotype its ID its species ID and its age (how many updates it has existed for) The first three of these statistics are purely for identification purposes.</p>
+<p>To the right of the soup status column we have some information about the dominant genotype. This section simply lists the name of this genotype, its ID, its Species ID and its age (how many updates it has existed for). The first three of these statistics are purely for identification purposes.</p>
 <p>On the right side of the screen more statistics are given for a number of common measurements on the dominant genotype as well as the average across all genotypes.</p>
-<p>In the middle left side of the screen we have information about the various taxonomic levels in avida; we give the current abundance of each in the Current column the total number of each that have existed over the entire run in the Total column the average number of updates each have existed in the Ave Age column and finally the entropy of each in the Entropy column.</p>
-<p>Finally along the bottom of this screen we list the total number of organisms which have completed each of the assortment of tasks available in avida These numbers reflect only those organisms which have actually finished the task so even if every organism in the soup is capable of completing a task not all of them may be listed because the newborns would not have finished it for the first time.</p>
+<p>In the middle left side of the screen we have information about the various taxonomic levels in Avida; we give the current abundance of each in the Current column, the total number of each that have existed over the entire run in the Total column, the average number of updates each have existed in the Ave Age column and finally the entropy of each in the Entropy column.</p>
+<p>Finally along the bottom of this screen we list the total number of organisms which have completed each of the assortment of tasks available in Avida. These numbers reflect only those organisms which have actually finished the task so even if every organism in the soup is capable of completing a task not all of them may be listed because the newborns would not have finished it for the first time.</p>
 <h2>The Histogram Screen</h2>
 <p>This screen is a histogram of the most abundant genotypes or species (use '</p>
 <p><img class="aligncenter size-full wp-image-270" src="images/Text_View_Hist_Mode_1.jpg" alt="Histogram Screen shows a bar graph where showing the abundance of the 11 most common organisms" width="567" height="307" /></p>
 <p>The first number here represents the fitness of the organism; this is the relative replication rate as compared to the other organisms in the population.</p>
-<p>Next comes the name of the genotype (For example 096-aaacf) This is an identifier for the genotype and the name of the file it will be saved under if it is extracted The number portion (before the dash) of the name is the length of the code for that genotype and the letter sequence after the dash gives a unique identifier for it These are never repeated throughout a single run.</p>
+<p>Next comes the name of the genotype (For example 096-aaacf). This is an identifier for the genotype and the name of the file it will be saved under if it is extracted. The number portion (before the dash) of the name is the length of the code for that genotype and the letter sequence after the dash gives a unique identifier for it. These are never repeated throughout a single run.</p>
 <p>The repeated '#' after the name is the actual histogram; the number of characters which appear here is the relative current abundance of the genotype This allows quick recognition of which genotypes are dominant in the soup.</p>
 <p>Finally each line ends with a number which is the exact abundance of organisms currently within this genotype.</p>
 <p>If species information is being recorded (i.e. the SPECIES_RECORDING flag in the avida.cfg file is set to 1 or 2) the Genotype Abundance and Species Abundance Views might look like:</p>
