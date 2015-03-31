@@ -47,52 +47,77 @@ An abbreviated description of the 26 default instructions is below.
 <table>
 <tr><th valign=top>(a-c) <td><code>nop-A</code>, <code>nop-B</code>,&nbsp;<br> and <code>nop-C</code>
     <td valign=top>No-operation instructions; these modify other instructions.</tr>
+
 <tr><th>(d) <td><code>if-n-equ</code>
     <td>Execute next instruction only-if ?BX? does not equal its complement</tr>
+
 <tr><th>(e) <td><code>if-less</code>
     <td>Execute next instruction only if ?BX? is less than its complement</tr>
-<tr><th>(f) <td><code>pop</code>
-    <td>Remove a number from the current stack and place it in ?BX?</tr>
-<tr><th>(g) <td><code>push</code>
-    <td>Copy the value of ?BX? onto the top of the current stack</tr>
-<tr><th>(h) <td><code>swap-stk</code>
-    <td>Toggle the active stack</tr>
-<tr><th>(i) <td><code>swap</code>
-    <td>Swap the contents of ?BX? with its complement.</tr>
-<tr><th>(j) <td><code>shift-r</code>
-    <td>Shift all the bits in ?BX? one to the right</tr>
+
+<tr><th>(f) <td><code>if-label</code>
+    <td>Execute the next instruction only if the given template complement was just copied</tr>
+    
+<tr><th>(g) <td><code>mov-head</code>
+    <td>Move the ?IP? to the same position as the Flow-Head</tr>
+
+<tr><th>(h) <td><code>jmp-head</code>
+    <td>Move the ?IP? by a fixed amount found in CX</tr>
+
+<tr><th>(i) <td><code>get-head</code>
+    <td>Write the position of the ?IP? into CX</tr>
+
+<tr><th>(j) <td><code>set-flow</code>
+    <td>Move the Flow-Head to the memory position specified by ?CX?</tr>
+
 <tr><th>(k) <td><code>shift-l</code>
     <td>Shift all the bits in ?BX? one to the left</tr>
-<tr><th>(l) <td><code>inc</code>
+    
+<tr><th>(l) <td><code>shift-r</code>
+    <td>Shift all the bits in ?BX? one to the right</tr>
+
+<tr><th>(m) <td><code>inc</code>
     <td>Increment ?BX?</tr>
-<tr><th>(m) <td><code>dec</code>
+
+<tr><th>(n) <td><code>dec</code>
     <td>Decrement ?BX?</tr>
-<tr><th>(n) <td><code>add</code>
+
+<tr><th>(o) <td><code>push</code>
+    <td>Copy the value of ?BX? onto the top of the current stack</tr>
+
+<tr><th>(p) <td><code>pop</code>
+    <td>Remove a number from the current stack and place it in ?BX?</tr>
+
+<tr><th>(q) <td><code>swap-stk</code>
+    <td>Toggle the active stack</tr>
+
+<tr><th>(r) <td><code>swap</code>
+    <td>Swap the contents of ?BX? with its complement.</tr>
+
+<tr><th>(s) <td><code>add</code>
     <td>Calculate the sum of BX and CX; put the result in ?BX?</tr>
-<tr><th>(o) <td><code>sub</code>
+
+<tr><th>(t) <td><code>sub</code>
     <td>Calculate the BX minus CX; put the result in ?BX?</tr>
-<tr><th>(p) <td><code>nand</code>
+
+<tr><th>(u) <td><code>nand</code>
     <td>Perform a bitwise NAND on BX and CX; put the result in ?BX?</tr>
-<tr><th>(q) <td><code>IO</code>
-    <td>Output the value ?BX? and replace it with a new input</tr>
-<tr><th>(r) <td><code>h-alloc</code>
-    <td>Allocate memory for an offspring</tr>
-<tr><th>(s) <td><code>h-divide</code>
-    <td>Divide off an offspring located between the Read-Head and Write-Head.</tr>
-<tr><th>(t) <td><code>h-copy</code>
+
+<tr><th>(v) <td><code>h-copy</code>
     <td>Copy an instruction from the Read-Head to the Write-Head and advance both.</tr>
-<tr><th>(u) <td><code>h-search</code>
+
+<tr><th>(w) <td><code>h-alloc</code>
+    <td>Allocate memory for an offspring</tr>
+
+<tr><th>(x) <td><code>h-divide</code>
+    <td>Divide off an offspring located between the Read-Head and Write-Head.</tr>
+
+<tr><th>(y) <td><code>IO</code>
+    <td>Output the value ?BX? and replace it with a new input</tr>
+
+<tr><th>(z) <td><code>h-search</code>
     <td>Find a complement template and place the Flow-Head after it.</tr>
-<tr><th>(v) <td><code>mov-head</code>
-    <td>Move the ?IP? to the same position as the Flow-Head</tr>
-<tr><th>(w) <td><code>jmp-head</code>
-    <td>Move the ?IP? by a fixed amount found in CX</tr>
-<tr><th>(x) <td><code>get-head</code>
-    <td>Write the position of the ?IP? into CX</tr>
-<tr><th>(y) <td><code>if-label</code>
-    <td>Execute the next instruction only if the given template complement was just copied</tr>
-<tr><th>(z) <td><code>set-flow</code>
-    <td>Move the Flow-Head to the memory position specified by ?CX?</tr>
+
+
 </table>
 
 
