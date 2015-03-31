@@ -68,12 +68,12 @@ An abbreviated description of the 26 default instructions is below.
 
 <tr><th>(j) <td><code>set-flow</code>
     <td>Move the Flow-Head to the memory position specified by ?CX?</tr>
-
-<tr><th>(k) <td><code>shift-l</code>
-    <td>Shift all the bits in ?BX? one to the left</tr>
-    
-<tr><th>(l) <td><code>shift-r</code>
+  
+<tr><th>(k) <td><code>shift-r</code>
     <td>Shift all the bits in ?BX? one to the right</tr>
+
+<tr><th>(l) <td><code>shift-l</code>
+    <td>Shift all the bits in ?BX? one to the left</tr>
 
 <tr><th>(m) <td><code>inc</code>
     <td>Increment ?BX?</tr>
