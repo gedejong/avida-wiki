@@ -567,7 +567,6 @@ the data and output the results.
 
 </dd>
 
-</dl>
 <dt><strong>
   ANALYZE_COMPLEXITY_DELTA
 </strong></dt>
