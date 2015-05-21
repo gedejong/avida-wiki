@@ -510,8 +510,73 @@ the data and output the results.
 	just create all the recombinant genotypes using organisms from baches 1 and 2
 	and put them in the batch3. 
 </dd>
-</dl>
+<dt><strong>
+  ANALYZE_REDUNDANCY_BY_INST_FAILURE 
+</strong></dt>
+<dd>
+	Determine redundancy by calculating the percentage of the lifetimes where fitness is decreased over a range of instruction failure probabilities.
 
+</dd>
+<dt><strong>
+  ANALYZE_COMPLEXITY 
+	[<span class="cmdarg">mut_rate</span>] [<span class="cmdarg">directory</span>]
+	[<span class="cmdarg">useResources</span>] [<span class="cmdarg">batchFrequency</span>]
+</strong></dt>
+<dd>
+	Loops through each genotype in the batch and tests the fitness of each single site mutant. useResources is a flag to set whether the testCPU should use resources when testing the mutants. Calculates probabilities at mutation selection balance, normalizes fitness values, and calculates and outputs complexity based on entropy.
+</dd>
+
+<dt><strong>
+  ANALYZE_LINEAGE_COMPLEXITY 
+</strong></dt>
+<dd>
+	Loops through each genotype in the batch and calculates the number of positive and neutral mutations for single and double mutations. Calculates entropy as (log(pos_neut_mut/( pow((double)num_insts,(double)2)*(gen_length)*(gen_length-1)*(0.5))) / log(num_insts) where num_insts is the number of instructions in the instruction set. Calculates and outputs complexity as gen_length-entropy.
+</dd>
+
+<dt><strong>
+  ANALYZE_KNOCKOUTS 
+[<span class="cmdarg">max_knockouts</span>] 
+</strong></dt>
+<dd>
+	Loops through all genomes in batch and tests the removal of each instruction (-2=lethal, -1=detrimental, 0=neutral, 1=beneficial). If max_knockouts is more than one, also tests pairs of knockouts. If both individual knockouts are both harmful, but in combination they are neutral or even beneficial, they should not count as information. If the individual knockouts are both neutral (or beneficial?), but in combination they are harmful, they are likely redundant to each other.  For now, count them both as information. Outputs the counts of each type of instruction.
+
+</dd>
+
+<dt><strong>
+  ANALYZE_POP_COMPLEXITY 
+</strong></dt>
+<dd>
+	Loops through all genotypes in batch and outputs the complexity of each genotype as 1 - entropy.
+
+</dd>
+
+<dt><strong>
+  ANALYZE_NEWINFO 
+[<span class="cmdarg">mutation_rate</span>] [<span class="cmdarg">directory</span>]
+</strong></dt>
+<dd>
+	Only works for fixed length runs and requires lineage in the batch. Calculates the information of each organism and its parent about the environment and finds if there is a gain or decrease of information. Compares parent and child information at each instruction site to determine if information has been gained or lost. Calculates information the same as ANALYZE_COMPLEXITY.
+
+</dd>
+
+<dt><strong>
+  ANALYZE_MUTATION_TRACEBACK
+</strong></dt>
+<dd>
+	Works best on lineages and requires fixed length genomes. Loops through each genotype to check for mutations from the previous genotype in the lineage and then tests if those mutations are currently adaptive. Prints out the number of beneficial, neutral, detrimental and static sites at the given lineage depth.
+
+</dd>
+
+</dl>
+<dt><strong>
+  ANALYZE_COMPLEXITY_DELTA
+</strong></dt>
+<dd>
+	This command will examine the current population, and sample mutations to see what the distribution of complexity changes is.  Only genotypes with a certain abundance (default=3) will be tested to make sure that the organism didn't already have hidden complexity due to a downward step.
+
+</dd>
+
+</dl>
 
 <p>&nbsp;</p>
 <h3>Building Input Files for Avida</h3>
