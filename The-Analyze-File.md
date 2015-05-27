@@ -243,7 +243,7 @@ to only include those genotypes that are needed.
   used as an id number to indicate the desired genotype (if no such id
   exists, a warning will be given).  Multiple arguments can be given to
   this command, in which case all those genotypes in that list will be
-  preserved and the remainder deleted.
+  preserved and the remainder deleted. If no argument is passed for type, it uses max num_cpus as default.
 </dd>
 <dt><strong>FIND_ORGANISM [<span class="cmdargopt">random</span>]</strong></dt>
 <dd>
