@@ -1,3 +1,5 @@
+An instruction set is actually a whole set of configurations, usually contained in their own file and included in the avida.cfg file with <code>#include INST_SET=instset.cfg</code>.  
+
 <h2>Specifiying Instruction Sets in avida.cfg</h2>
 
 <p>Instruction sets are actually part of the avida.cfg file.  However, instead of writing the instruction set out in avida.cfg itself, which would be rather long and messy, each instruction set is placed in a separate file.  A preprocessor include (of the form <code>#include $filename</code>) is then used to include each instruction set in avida.cfg.  Multiple instruction sets may be included.  
