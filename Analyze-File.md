@@ -535,10 +535,19 @@ the data and output the results.
 
 <dt><strong>
   ANALYZE_KNOCKOUTS 
-[<span class="cmdarg">max_knockouts</span>] 
+[<span class="cmdarg">file_name</span>] [<span class="cmdarg">max_knockouts</span>] 
 </strong></dt>
 <dd>
 	Loops through all genomes in batch and tests the removal of each instruction (-2=lethal, -1=detrimental, 0=neutral, 1=beneficial). If max_knockouts is more than one, also tests pairs of knockouts. If both individual knockouts are both harmful, but in combination they are neutral or even beneficial, they should not count as information. If the individual knockouts are both neutral (or beneficial?), but in combination they are harmful, they are likely redundant to each other.  For now, count them both as information. Outputs the counts of each type of instruction.
+
+</dd>
+
+<dt><strong>
+  GET_SKELETONS 
+[<span class="cmdarg">max_knockouts</span>] 
+</strong></dt>
+<dd>
+	Similar to analyze_knockouts, however instead of just counting the number of non-informative sites, it replaces non-informative (ie neutral) sites with the NULL instruction, creating genotype skeletons. If max_knockouts is 1, it only tests single knockouts. If max_knockouts is more than 1, it tests double knockouts as well (such as inc and then dec which are only neutral when removed together).
 
 </dd>
 
