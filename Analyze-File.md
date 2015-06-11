@@ -239,7 +239,7 @@ to only include those genotypes that are needed.
   genotype to choose.  Options available for type are <em>num_cpus</em> (to
   choose the genotype with the maximum organismal abundance at time of
   printing), <em>total_cpus</em> (number of organisms ever of this genotype),
-  <em>fitness</em>, or <em>merit</em>.  If a the type entered is numerical, it is
+  <em>fitness</em>, <em>length</em>, or <em>merit</em>.  If a the type entered is numerical, it is
   used as an id number to indicate the desired genotype (if no such id
   exists, a warning will be given).  Multiple arguments can be given to
   this command, in which case all those genotypes in that list will be
