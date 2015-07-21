@@ -1,5 +1,5 @@
 <h1 id="introductiontoparasitesinavida">Introduction to Parasites in Avida</h1>
-<p>This introduction assumes some basic knowledge about Avida. In particular, familiarity with the basic organism and hardware as described <a href="http://avida.devosoft.org/wiki/documentation/general-information/a-guided-tour-of-the-ancestor-and-its-hardware/">here</a> will be very useful to have.</p>
+<p>This introduction assumes some basic knowledge about Avida. In particular, familiarity with the basic organism and hardware as described <a href="https://github.com/devosoft/avida/wiki/Default-Ancestor-Guided-Tour">here</a> will be very useful to have.</p>
 <h2 id="verybriefoverviewofthetranssmthardware">(Very) Brief Overview of the TransSMT Hardware</h2>
 <p>With that said, parasites currently do not work in the default hardware but rather one that supports better threading capabilities – the TransSMT hardware. The differences aren’t huge, but they deserve their own documentation. Instead, I will just highlight major differences between the hardware types important for parasites, namely memoryspaces and threads.</p>
 <h4 id="memoryspaces">Memory Spaces</h4>
