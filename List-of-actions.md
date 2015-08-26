@@ -411,9 +411,9 @@ environmental settings on the fly. <strong>You should create all resources and
 reactions in the environment file</strong> and only use this file to change these
 resources and reactions.</li>
 	<li><strong><a name="DelayedDemeEvent"></a>DelayedDemeEvent</strong>
-<em>&lt;int x1&gt; &lt;int y1&gt; &lt;int x2&gt; &lt;int y2&gt; &lt;int delay&gt; &lt;int duraion&gt; &lt;bool static_position&gt; &lt;int total_events&gt;</em></li>
+<em>&lt;int x1&gt; &lt;int y1&gt; &lt;int x2&gt; &lt;int y2&gt; &lt;int delay&gt; &lt;int duration&gt; &lt;bool static_position&gt; &lt;int total_events&gt;</em></li>
 	<li><strong><a name="DelayedDemeEventsPerSlots"></a>DelayedDemeEventsPerSlots</strong>
-<em>&lt;int x1&gt; &lt;int y1&gt; &lt;int x2&gt; &lt;int y2&gt; &lt;int delay&gt; &lt;int duraion&gt; &lt;bool static_position&gt; &lt;int total_slots_per_deme&gt; &lt;int total_events_per_slot_max&gt; &lt;int total_events_per_slot_min&gt; &lt;int tolal_event_flow_levels&gt;</em></li>
+<em>&lt;int x1&gt; &lt;int y1&gt; &lt;int x2&gt; &lt;int y2&gt; &lt;int delay&gt; &lt;int duration&gt; &lt;bool static_position&gt; &lt;int total_slots_per_deme&gt; &lt;int total_events_per_slot_max&gt; &lt;int total_events_per_slot_min&gt; &lt;int tolal_event_flow_levels&gt;</em></li>
 	<li><strong><a name="InjectResource"></a>InjectResource</strong>
 <em>&lt;string res_name&gt; &lt;double res_count&gt;</em>Inject (add) a specified amount of a specified resource.
 <span class="cmdarg">res_name</span> must already exist as
