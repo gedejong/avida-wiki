@@ -409,7 +409,7 @@ and reaction parameters.
 <a href="environment.html">environment</a> file. This will change
 environmental settings on the fly. <strong>You should create all resources and
 reactions in the environment file</strong> and only use this file to change these
-resources and reactions.</li>
+resources and reactions.  Also, note that this action does not replace reactions already in the environment that share the same name as the argument given to ChangeEnvironment; it simply adds another reaction with the same name.</li>
 	<li><strong><a name="DelayedDemeEvent"></a>DelayedDemeEvent</strong>
 <em>&lt;int x1&gt; &lt;int y1&gt; &lt;int x2&gt; &lt;int y2&gt; &lt;int delay&gt; &lt;int duration&gt; &lt;bool static_position&gt; &lt;int total_events&gt;</em></li>
 	<li><strong><a name="DelayedDemeEventsPerSlots"></a>DelayedDemeEventsPerSlots</strong>
