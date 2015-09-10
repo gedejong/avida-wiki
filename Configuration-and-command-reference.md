@@ -1,6 +1,6 @@
 ==Main Configuration Files==
 * [[avida.cfg|avida.cfg: The Avida Configuration File]]
-* [[Events-file|The Events File]]
+* [Events File](https://github.com/devosoft/avida/wiki/Events-file)
 * [Environment File](https://github.com/devosoft/avida/wiki/Environment-file)
 * [Instruction Set](https://github.com/devosoft/avida/wiki/Instruction-Set)
 * [[instset-heads.cfg]]
