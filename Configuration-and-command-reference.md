@@ -8,18 +8,18 @@
 * [Analyze File](https://github.com/devosoft/avida/wiki/Analyze-File)
 
 ==Analyze Mode==
-* [[Guidelines to Analyze Mode]]
+* [[Analyze File]]
 * [[Sample Analyze Programs]]
 
 ==Subpopulations (Demes)==
-* [[Deme Introduction|A brief intro to demes...]]
-* [[Deme Migration|Migration]]
+* [[Deme introduction]]
+* [[Deme migration]]
 
 ==Misc. Configuration==
 * [[Quirks]]
 * [[Setting up Fixed-Length Organisms]]
 * [[Introduction to Parasites]]
 * [[Gradient Resources]]
-* [[Internal Resources|Internal Resources: an explanation and guide to use]]
+* [[Internal resources]]
 * [[Using mating types (separate sexes)]]
 * [[Energy model configuration]]
