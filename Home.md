@@ -15,7 +15,6 @@ If you would like to contribute to this documentation, please create an account 
 **[New User Information](wiki/New-User-Information)**
 
 ## General Information
-* [Beginner Documentation] (wiki/Beginner-Documentation)
 * [Overview](wiki/Overview)
 * [A Guided Tour of the Ancestor and its Hardware](wiki/Default-Ancestor-Guided-Tour)
 * [Text Viewer](wiki/Text-Viewer)
