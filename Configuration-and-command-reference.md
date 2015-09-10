@@ -1,11 +1,11 @@
 ==Main Configuration Files==
 * [[avida.cfg|avida.cfg: The Avida Configuration File]]
 * [[Events-file|The Events File]]
-* [[Environment-file | The Environment File]]
-* [[The Instruction Set]]
+* [Environment File](https://github.com/devosoft/avida/wiki/Environment-file)
+* [Instruction Set](https://github.com/devosoft/avida/wiki/Instruction-Set)
 * [[instset-heads.cfg]]
 * [[default-heads.org]]
-* [[The Analyze File]]
+* [Analyze File](https://github.com/devosoft/avida/wiki/Analyze-File)
 
 ==Analyze Mode==
 * [[Guidelines to Analyze Mode]]
