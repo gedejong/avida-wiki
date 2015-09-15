@@ -255,7 +255,8 @@ It will then place a new <a href="Glossary--Input-Output">input</a> into ?BX?.
 <h3>(r) <code>h-alloc</code></h3>
 
 This instruction allocates additional <a href="Glossary--Memory">memory</a>
-for the organism up to the maximum it is allowed to use for its offspring.
+for the organism up to the maximum it is allowed to use for its offspring. 
+If allocation is successful, the original memory size is loaded into the AX register.
 
 
 <h3>(s) <code>h-divide</code></h3>
