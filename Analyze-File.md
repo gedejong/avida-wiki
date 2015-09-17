@@ -544,10 +544,10 @@ the data and output the results.
 
 <dt><strong>
   GET_SKELETONS 
-[<span class="cmdarg">max_knockouts</span>] 
+[<span class="cmdarg">max_knockouts=2</span>] 
 </strong></dt>
 <dd>
-	Similar to analyze_knockouts, however instead of just counting the number of non-informative sites, it replaces non-informative (ie neutral) sites with the NULL instruction, creating genotype skeletons. If max_knockouts is 1, it only tests single knockouts. If max_knockouts is more than 1, it tests double knockouts as well (such as inc and then dec which are only neutral when removed together).
+	Similar to analyze_knockouts, however instead of just counting the number of non-informative sites, it removes completely non-informative (i.e. neutral) sites, and replaces sites that are informative only as placeholders with the NULL instruction. This creates genotype "skeletons". If max_knockouts is 1, it only tests single knockouts. If max_knockouts is more than 1 (default), it tests double knockouts as well (such as inc and then dec which are only neutral when removed together). (Development note: GET_SKELETONS can be called in analyze mode to skeletonize the current batch, but if you're building a more complicated command that involves skeletons, take a look at helper function with the same name that returns a vector of skeletons.)
 
 </dd>
 
