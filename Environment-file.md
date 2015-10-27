@@ -264,7 +264,7 @@ instance). The command has the format:
 <p>
 <Blockquote>
 Where <code>resource_name</code> is the name of the spatial resource that this 
-cell command will modify.  If this resource has not been defined yet a new 
+cell command will modify.  If this resource has not been defined yet, a new 
 resource with this name will be created.
 </P>
 <p>
