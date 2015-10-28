@@ -1319,10 +1319,10 @@ gestation_time, and task counts for each phenotypic variant of each genotype.</l
 	<li><strong><a name="PrintReputationData"></a>PrintReputationData</strong>
 <em>[string fname="reputation.dat"]</em></li>
 	<li><strong><a name="PrintResourceData"></a>PrintResourceData</strong>
-<em>[string fname="resource.dat"]</em>Print the current counts of each resource available to the population. This uses
-the environment configuration to determine what resources are in use. Also creates
-seperate files <kbd>resource_<em>resource_name</em>.m</kbd> (in a format that is
-designed to be read into Matlab) for each spatial resource.</li>
+<em>[string fname="resource.dat"] [string print_maps="1"]</em>Print the current counts of each resource available to the population. This uses
+the environment configuration to determine what resources are in use. Also optionally creates
+separate files <kbd>resource_<em>resource_name</em>.m</kbd> (in a format that is
+designed to be read into Matlab) for each spatial resource. Uses 1 as default but you can put 0 to only print resource.dat and save space.</li>
 	<li><strong><a name="PrintSenseData"></a>PrintSenseData</strong>
 <em>[string fname="sense.dat"]</em></li>
 	<li><strong><a name="PrintSenseExeData"></a>PrintSenseExeData</strong>
