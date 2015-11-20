@@ -591,6 +591,11 @@ Default values are in brackets:
   <td>0</td>
 </tr>
 <tr>
+  <td class="resall">random</td>
+  <td>Whether any produced resource is placed randomly in the world instead of the focal cell.</td>
+  <td>0</td>
+</tr>
+<tr>
   <td class="resall">depletable</td>
   <td>
     Whether this resource is consumed by reactions.
