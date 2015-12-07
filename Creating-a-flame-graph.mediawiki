@@ -8,7 +8,7 @@ Once you have your population files, there are two ways to create a flamegraph. 
 
 == Producing a Flame Graph with flamegraph.py ==
 
-flamegraph.py is a Python script found in source/utils/hist_map/ which uses matplotlib to produce the flamegraph.  (It requires both Python and [http://matplotlib.sourceforge.net/ matplotlib] to work). It will handle both unzipped (.spop) and gzipped(.spop.gz) files.
+flamegraph.py is a Python script found in avida-core/source/utils/hist_map/ which uses matplotlib to produce the flamegraph.  (It requires both Python and [http://matplotlib.sourceforge.net/ matplotlib] to work). It will handle both unzipped (.spop) and gzipped(.spop.gz) files.
 
 To run it:
 
