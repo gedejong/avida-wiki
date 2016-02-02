@@ -1,4 +1,4 @@
-==Main Configuration Files==
+## Main Configuration Files
 * [[Avida.cfg|Avida.cfg]]
 * [Events File](https://github.com/devosoft/avida/wiki/Events-file)
 * [Environment File](https://github.com/devosoft/avida/wiki/Environment-file)
@@ -7,15 +7,15 @@
 * [[default-heads.org]]
 * [Analyze File](https://github.com/devosoft/avida/wiki/Analyze-File)
 
-==Analyze Mode==
+## Analyze Mode
 * [[Analyze File]]
 * [[Sample Analyze Programs]]
 
-==Subpopulations (Demes)==
+## Subpopulations (Demes)
 * [[Deme introduction]]
 * [[Deme migration]]
 
-==Misc. Configuration==
+## Misc. Configuration 
 * [[Quirks]]
 * [[Setting up Fixed-Length Organisms]]
 * [[Introduction to Parasites]]
