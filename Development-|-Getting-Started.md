@@ -17,7 +17,7 @@ At this point you should be able to proceed to compiling.
 You will need a copy of <a href="http://cmake.org/">CMake</a>.
 <ol>
 	<li>At the top level of the source code run the <code>./build_avida </code>script.</li>
-        <ol><li>To compile the avida-viewer, use the flag <code>-DAVD_GUI_NCURSES</code> with <code>./build_avida</code></li></ol>
+        <ul><li>To compile the avida-viewer, use the flag <code>-DAVD_GUI_NCURSES</code> with <code>./build_avida</code></li></ul>
 	<li>Change into the directory <code>cbuild/work</code></li>
 	<li>The compiled executables (avida, avida-viewer), as well as the sample configuration files will be present in the work directory.</li>
 </ol>
