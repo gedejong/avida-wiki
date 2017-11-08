@@ -120,7 +120,8 @@ spatial resources)
   <td class="resspatial">inflowx1</td>
   <td>
     Leftmost coordinate of the rectangle where resource will flow
-    into world grid.
+    into world grid.  If not specified but an inflow rate is specified,
+    an x-coordinate will be determinstically assigned.
   </td>
   <td>0</td>
 </tr>
@@ -128,7 +129,7 @@ spatial resources)
   <td class="resspatial">inflowx2</td>
   <td>
     Rightmost coordinate of the rectangle where resource will flow
-    into world grid.
+    into world grid.  If not specified, inflowx1's value will be used.
   </td>
   <td>0</td>
 </tr>
@@ -136,7 +137,8 @@ spatial resources)
   <td class="resspatial">inflowy1</td>
   <td>
     Topmost coordinate of the rectangle where resource will flow
-    into world grid.
+    into world grid.  If not specified but an inflow rate is specified,
+    a y-coordinate will be determinstically assigned.
   </td>
   <td>0</td>
 </tr>
@@ -144,7 +146,7 @@ spatial resources)
   <td class="resspatial">inflowy2</td>
   <td>
     Bottommost coordinate of the rectangle where resource will flow
-    into world grid.
+    into world grid.  If not specified, inflowy1's value will be used.
   </td>
   <td>0</td>
 </tr>
@@ -160,7 +162,7 @@ spatial resources)
   <td class="resspatial">outflowx2</td>
   <td>
     Rightmost coordinate of the rectangle where resource will flow
-    out of world grid.
+    out of world grid.  If not specified, outflowx1's value will be used.
   </td>
   <td>0</td>
 </tr>
@@ -176,7 +178,7 @@ spatial resources)
   <td class="resspatial">outflowy2</td>
   <td>
     Bottommost coordinate of the rectangle where resource will flow
-    out of world grid.
+    out of world grid.  If not specified, outflowy1's value will be used.
   </td>
   <td>0</td>
 </tr>
@@ -250,6 +252,8 @@ quantity and have no inflow or outflow.  This is sometimes desirable if you
 want that resource to only be present as a byproduct of a reaction.
 Remember, though, that you should still have an outflow rate if it's in
 a chemostat.
+
+
 </p>
 
 <h3><a name="CELL">CELL Command</a></h3>
