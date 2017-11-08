@@ -164,7 +164,7 @@ spatial resources)
     Rightmost coordinate of the rectangle where resource will flow
     out of world grid.  If not specified, outflowx1's value will be used.
   </td>
-  <td>(unset)</td>
+  <td>outflowx1</td>
 </tr>
 <tr>
   <td class="resspatial">outflowy1</td>
@@ -180,7 +180,7 @@ spatial resources)
     Bottommost coordinate of the rectangle where resource will flow
     out of world grid.  If not specified, outflowy1's value will be used.
   </td>
-  <td>(unset)</td>
+  <td>outflowy1</td>
 </tr>
 <tr>
   <td class="resspatial">xdiffuse</td>
