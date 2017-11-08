@@ -123,7 +123,7 @@ spatial resources)
     into world grid.  If not specified but an inflow rate is specified,
     an x-coordinate will be determinstically assigned.
   </td>
-  <td>determinstic</td>
+  <td>(determinstic)</td>
 </tr>
 <tr>
   <td class="resspatial">inflowx2</td>
@@ -131,7 +131,7 @@ spatial resources)
     Rightmost coordinate of the rectangle where resource will flow
     into world grid.  If not specified, inflowx1's value will be used.
   </td>
-  <td>0</td>
+  <td>inflowx1</td>
 </tr>
 <tr>
   <td class="resspatial">inflowy1</td>
@@ -140,7 +140,7 @@ spatial resources)
     into world grid.  If not specified but an inflow rate is specified,
     a y-coordinate will be determinstically assigned.
   </td>
-  <td>deterministic</td>
+  <td>(deterministic)</td>
 </tr>
 <tr>
   <td class="resspatial">inflowy2</td>
@@ -148,7 +148,7 @@ spatial resources)
     Bottommost coordinate of the rectangle where resource will flow
     into world grid.  If not specified, inflowy1's value will be used.
   </td>
-  <td>0</td>
+  <td>inflowy1</td>
 </tr>
 <tr>
   <td class="resspatial">outflowx1</td>
@@ -156,7 +156,7 @@ spatial resources)
     Leftmost coordinate of the rectangle where resource will flow
     out of world grid.
   </td>
-  <td>0</td>
+  <td>(unset)</td>
 </tr>
 <tr>
   <td class="resspatial">outflowx2</td>
@@ -164,7 +164,7 @@ spatial resources)
     Rightmost coordinate of the rectangle where resource will flow
     out of world grid.  If not specified, outflowx1's value will be used.
   </td>
-  <td>0</td>
+  <td>(unset)</td>
 </tr>
 <tr>
   <td class="resspatial">outflowy1</td>
@@ -172,7 +172,7 @@ spatial resources)
     Topmost coordinate of the rectangle where resource will flow
     out of world grid.
   </td>
-  <td>0</td>
+  <td>(unset)</td>
 </tr>
 <tr>
   <td class="resspatial">outflowy2</td>
@@ -180,7 +180,7 @@ spatial resources)
     Bottommost coordinate of the rectangle where resource will flow
     out of world grid.  If not specified, outflowy1's value will be used.
   </td>
-  <td>0</td>
+  <td>(unset)</td>
 </tr>
 <tr>
   <td class="resspatial">xdiffuse</td>
