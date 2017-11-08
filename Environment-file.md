@@ -123,7 +123,7 @@ spatial resources)
     into world grid.  If not specified but an inflow rate is specified,
     an x-coordinate will be determinstically assigned.
   </td>
-  <td>0</td>
+  <td>determinstic</td>
 </tr>
 <tr>
   <td class="resspatial">inflowx2</td>
@@ -140,7 +140,7 @@ spatial resources)
     into world grid.  If not specified but an inflow rate is specified,
     a y-coordinate will be determinstically assigned.
   </td>
-  <td>0</td>
+  <td>deterministic</td>
 </tr>
 <tr>
   <td class="resspatial">inflowy2</td>
