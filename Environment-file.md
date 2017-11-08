@@ -30,6 +30,9 @@ Where <code>resource_name</code> is a unique name of the resource.  This name ma
 by a reaction.
 </P>
 <P>
+Note that non-global resources currently assume a world in which each cell may have up to eight neighbors: four in each of the cardinal directions and four on the diagonal.  This may conflict with the world settings in avida.cfg for world geometries that do not make such assumptions.
+</P>
+<P>
 Where <code>options</code> is a colon delimited list of factors that modify the 
 resource. The following chart specifies these options.
 </P>
