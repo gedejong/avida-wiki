@@ -227,7 +227,7 @@ abbreviated version of this class:
 class <span class="class">cEnvironment</span> {
 private:
   <span class="comment">// Keep libraries of resources, reactions, and tasks.</span>
-  <span class="class">cResourceLib</span> <span class="object">resource_lib</span>;
+  <span class="class">cResourceRegistry</span> <span class="object">resource_lib</span>;
   <span class="class">cReactionLib</span> <span class="object">reaction_lib</span>;
   <span class="class">cTaskLib</span> <span class="object">task_lib</span>;
   <span class="class">cInstLib</span> <span class="object">inst_lib</span>;
