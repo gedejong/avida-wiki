@@ -30,6 +30,9 @@ Where <code>resource_name</code> is a unique name of the resource.  This name ma
 by a reaction.
 </P>
 <P>
+Note that non-global resources currently assume a world in which each cell may have up to eight neighbors: four in each of the cardinal directions and four on the diagonal.  This may conflict with the world settings in avida.cfg for world geometries that do not make such assumptions.
+</P>
+<P>
 Where <code>options</code> is a colon delimited list of factors that modify the 
 resource. The following chart specifies these options.
 </P>
@@ -123,7 +126,7 @@ spatial resources)
     into world grid.  If not specified but an inflow rate is specified,
     an x-coordinate will be determinstically assigned.
   </td>
-  <td>0</td>
+  <td>(determinstic)</td>
 </tr>
 <tr>
   <td class="resspatial">inflowx2</td>
@@ -131,7 +134,7 @@ spatial resources)
     Rightmost coordinate of the rectangle where resource will flow
     into world grid.  If not specified, inflowx1's value will be used.
   </td>
-  <td>0</td>
+  <td>inflowx1</td>
 </tr>
 <tr>
   <td class="resspatial">inflowy1</td>
@@ -140,7 +143,7 @@ spatial resources)
     into world grid.  If not specified but an inflow rate is specified,
     a y-coordinate will be determinstically assigned.
   </td>
-  <td>0</td>
+  <td>(deterministic)</td>
 </tr>
 <tr>
   <td class="resspatial">inflowy2</td>
@@ -148,7 +151,7 @@ spatial resources)
     Bottommost coordinate of the rectangle where resource will flow
     into world grid.  If not specified, inflowy1's value will be used.
   </td>
-  <td>0</td>
+  <td>inflowy1</td>
 </tr>
 <tr>
   <td class="resspatial">outflowx1</td>
@@ -156,7 +159,7 @@ spatial resources)
     Leftmost coordinate of the rectangle where resource will flow
     out of world grid.
   </td>
-  <td>0</td>
+  <td>(unset)</td>
 </tr>
 <tr>
   <td class="resspatial">outflowx2</td>
@@ -164,7 +167,7 @@ spatial resources)
     Rightmost coordinate of the rectangle where resource will flow
     out of world grid.  If not specified, outflowx1's value will be used.
   </td>
-  <td>0</td>
+  <td>outflowx1</td>
 </tr>
 <tr>
   <td class="resspatial">outflowy1</td>
@@ -172,7 +175,7 @@ spatial resources)
     Topmost coordinate of the rectangle where resource will flow
     out of world grid.
   </td>
-  <td>0</td>
+  <td>(unset)</td>
 </tr>
 <tr>
   <td class="resspatial">outflowy2</td>
@@ -180,7 +183,7 @@ spatial resources)
     Bottommost coordinate of the rectangle where resource will flow
     out of world grid.  If not specified, outflowy1's value will be used.
   </td>
-  <td>0</td>
+  <td>outflowy1</td>
 </tr>
 <tr>
   <td class="resspatial">xdiffuse</td>
