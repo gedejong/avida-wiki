@@ -57,3 +57,18 @@ There are two main ways to contribute code changes to the repositories of the Av
 
 Core developers who have been granted direct push access will need to utilize the authenticated remote repository path. The authenticated repository is <code>git@github.com:devosoft/avida.git</code>. If you are working from a standard clone of the source code, you may update your <em>push</em> URLs with the following commands:
 <pre>$ git remote set-url --push origin git@github.com:devosoft/avida.git</pre>
+
+## Migration Validation Checklist (Strict)
+
+Before opening or merging a migration PR (C/C++ and Rust coexistence), run:
+
+<pre>$ ./build_avida -DAVD_UNIT_TESTS:BOOL=ON
+$ ./run_tests --mode=slave
+$ ./cbuild/work/unit-tests
+$ AVD_ENABLE_RUST=1 ./build_avida -DAVD_UNIT_TESTS:BOOL=ON
+$ ./run_tests --mode=slave
+$ ./cbuild/work/unit-tests
+$ cd rust/avida-rust
+$ cargo test
+$ cargo fmt --check
+$ cargo clippy -- -D warnings</pre>

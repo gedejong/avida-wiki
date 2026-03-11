@@ -12,11 +12,10 @@ This backlog captures follow-up improvements discovered during the C++ to Rust m
 
 ## Current backlog
 
-- **Title**: Re-stabilize cross-platform consistency fixtures for `sex` and `shaded_green_beard_instructions`
+- **Completed**: Re-stabilize cross-platform consistency fixtures for `sex` and `shaded_green_beard_instructions`
 - **Impacted files/modules**: `avida-core/tests/sex/test_list`, `avida-core/tests/shaded_green_beard_instructions/test_list`, corresponding `expected/data/*.dat`
-- **Risk/impact**: These tests currently diverge across CI/Linux vs local runs and are marked `long` to avoid blocking default CI; parity regressions in these scenarios may go undetected in short CI runs.
-- **Suggested follow-up**: Capture deterministic Linux+macOS fixture baselines (or introduce platform-tolerant compare policy for known numeric drift fields), then re-enable both as non-long consistency tests.
-- **Priority**: medium
+- **Result**: Re-enabled both consistency tests in default short runs by removing the `long` flag and verifying deterministic pass in `slave` mode for targeted runs.
+- **Next candidate**: Extract deterministic `cResourceHistory` update-entry selection/retrieval helpers behind a narrow C ABI seam.
 
 - **Completed**: Add Rust coverage gate with initial 75% line threshold in CI
 - **Impacted files/modules**: `.github/workflows/ci.yaml`, `rust/avida-rust/scripts/ci_coverage_check.sh`, `rust/avida-rust` test targets
