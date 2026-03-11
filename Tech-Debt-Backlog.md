@@ -12,6 +12,16 @@ This backlog captures follow-up improvements discovered during the C++ to Rust m
 
 ## Current backlog
 
+- **Completed**: Extract deterministic `cSpatialResCount` flow-scalar and range-normalization helpers behind additive Rust FFI
+- **Impacted files/modules**: `avida-core/source/main/cSpatialResCount.cc`, `avida-core/source/main/cResourceCount.cc`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/spatial_res_count_helpers.rs`, `rust/avida-rust/src/lib.rs`, `avida-core/source/targets/unit-tests/main.cc`
+- **Result**: Routed `CheckRanges` span normalization and `FlowMatter` scalar computation through additive Rust helpers with boundary/legacy-guard parity fixtures, while keeping C++ grid traversal and state mutation ownership unchanged.
+- **Next candidate**: Add lightweight reviewer checklist + guardrails to keep new Rust FFI modules aligned with shared `common.rs` pointer-accessor and CString/output-pointer helper conventions.
+
+- **Completed**: Extract deterministic `cResourceCount` non-spatial step-application kernel behind additive Rust helper
+- **Impacted files/modules**: `avida-core/source/main/cResourceCount.cc`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/resource_count_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`
+- **Result**: Routed `DoNonSpatialUpdates` chunked recurrence application (`while num_steps > PRECALC_DISTANCE` + remainder application) through new Rust helper `avd_rc_apply_nonspatial_steps`, preserving C++ resource ownership/state while centralizing deterministic update math with Rust+C++ parity and invalid-input guard fixtures.
+- **Next candidate**: Add lightweight reviewer checklist + guardrails to keep new Rust FFI modules aligned with shared `common.rs` pointer-accessor and CString/output-pointer helper conventions.
+
 - **Completed**: Add explicit backtrace-enabled CI validation leg (opt-in path)
 - **Impacted files/modules**: `.github/workflows/ci.yaml`, `build_avida`, `CMakeLists.txt`, `libs/backward-cpp/CMakeLists.txt`
 - **Result**: Added a dedicated CI smoke job that explicitly sets `AVIDA_ENABLE_BACKTRACE=1` for configure/reconfigure + build coverage while preserving default low-noise lanes; also hardened vendored `backward-cpp` alias creation to avoid duplicate-target failures when backtrace mode is enabled.
