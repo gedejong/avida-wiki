@@ -12,10 +12,20 @@ This backlog captures follow-up improvements discovered during the C++ to Rust m
 
 ## Current backlog
 
+- **Completed**: Harden cross-platform determinism for `sex` and `shaded_green_beard_instructions`
+- **Impacted files/modules**: `avida-core/tests/sex/config/avida.cfg`, `avida-core/tests/sex/config/events.cfg`, `avida-core/tests/shaded_green_beard_instructions/config/avida.cfg`, `avida-core/tests/shaded_green_beard_instructions/config/eventsFullPopTest.cfg`, fixture `expected/data/*`, `.github/workflows/ci.yaml`
+- **Result**: Pinned fixture-local determinism knobs, reduced high-variance assertion surface (dominant/average/time/archive outputs), and improved CI diagnostics with single-run non-blocking diagnostics, explicit diff threshold, XML report artifacts, and selected-test manifests.
+- **Next candidate**: Extend shared CString/output-pointer helper adoption to remaining Rust FFI modules.
+
+- **Completed**: Extract deterministic `cResourceHistory` update-entry selection/retrieval helpers behind a narrow C ABI seam
+- **Impacted files/modules**: `avida-core/source/main/cResourceHistory.cc`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/resource_history_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`
+- **Result**: Routed exact/nearest entry selection and index-safe default-zero value retrieval through Rust FFI helpers with boundary-focused Rust/C++ parity tests, while preserving C++ ownership, parsing, and mutation flows.
+- **Next candidate**: Extend shared CString/output-pointer helper adoption to remaining Rust FFI modules.
+
 - **Completed**: Re-stabilize cross-platform consistency fixtures for `sex` and `shaded_green_beard_instructions`
 - **Impacted files/modules**: `avida-core/tests/sex/test_list`, `avida-core/tests/shaded_green_beard_instructions/test_list`, corresponding `expected/data/*.dat`
 - **Result**: Re-enabled both consistency tests in default short runs by removing the `long` flag and verifying deterministic pass in `slave` mode for targeted runs.
-- **Next candidate**: Extract deterministic `cResourceHistory` update-entry selection/retrieval helpers behind a narrow C ABI seam.
+- **Next candidate**: Extend shared CString/output-pointer helper adoption to remaining Rust FFI modules.
 
 - **Completed**: Add Rust coverage gate with initial 75% line threshold in CI
 - **Impacted files/modules**: `.github/workflows/ci.yaml`, `rust/avida-rust/scripts/ci_coverage_check.sh`, `rust/avida-rust` test targets
@@ -27,11 +37,10 @@ This backlog captures follow-up improvements discovered during the C++ to Rust m
 - **Result**: Added explicit truncation/saturation guards in Rust scheduling helpers plus boundary fixtures for negative, NaN/Inf, and zero/invalid-step behavior in Rust+C++ tests.
 - **Next candidate**: Expand Wave 5 `cResourceCount` seam to deterministic spatial-update scheduling helpers.
 
-- **Title**: Extend shared CString/output-pointer helper adoption to remaining Rust FFI modules
-- **Impacted files/modules**: `rust/avida-rust/src/resource_count_helpers.rs`, future `rust/avida-rust/src/*` FFI modules, `rust/avida-rust/src/common.rs`
-- **Risk/impact**: The new shared helper layer now covers `provider_helpers`, `time_series_recorder`, and `package`, but remaining modules can still drift back to local raw-pointer patterns.
-- **Suggested follow-up**: Migrate remaining Rust FFI modules to `common.rs` CString/output-pointer helpers and add a short reviewer checklist item to keep new callsites aligned.
-- **Priority**: low
+- **Completed**: Extend shared CString/output-pointer helper adoption to remaining Rust FFI modules
+- **Impacted files/modules**: `rust/avida-rust/src/common.rs`, `rust/avida-rust/src/resource_count_helpers.rs`, `rust/avida-rust/src/resource_history_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`
+- **Result**: Consolidated remaining low-risk raw pointer/C-string handling through shared `common.rs` helpers (`with_cstr`, new `with_slice`) and locked null/invalid input parity with expanded Rust+C++ unit tests.
+- **Next candidate**: Keep new FFI modules aligned with shared pointer-accessor macro and CString helper conventions using a reviewer checklist.
 
 - **Title**: Keep new FFI modules aligned with shared pointer-accessor macro pattern
 - **Impacted files/modules**: `rust/avida-rust/src/common.rs`, future `rust/avida-rust/src/*` FFI modules
@@ -66,7 +75,7 @@ This backlog captures follow-up improvements discovered during the C++ to Rust m
 - **Completed**: Expand Wave 5 `cResourceCount` seam to deterministic spatial-update scheduling helpers
 - **Impacted files/modules**: `avida-core/source/main/cResourceCount.cc`, `rust/avida-rust/src/resource_count_helpers.rs`, `avida-core/include/private/rust/running_stats_ffi.h`, `avida-core/source/targets/unit-tests/main.cc`
 - **Result**: Routed `m_spatial_update - m_last_updated` derivation through new Rust helper `avd_rc_num_spatial_updates` with explicit saturating boundary behavior and dual-language parity fixtures, while leaving spatial mutation/state transitions in C++.
-- **Next candidate**: Extract deterministic `cResourceHistory` update-entry selection/retrieval helpers behind a narrow C ABI seam.
+- **Next candidate**: Extend shared CString/output-pointer helper adoption to remaining Rust FFI modules.
 
 - **Title**: Broaden `Data::Package` primitive formatting parity matrix coverage
 - **Impacted files/modules**: `rust/avida-rust/src/package.rs`, `avida-core/source/targets/unit-tests/main.cc`, `libs/apto/include/apto/core/StringUtils.h`
