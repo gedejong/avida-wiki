@@ -12,6 +12,16 @@ This backlog captures follow-up improvements discovered during the C++ to Rust m
 
 ## Current backlog
 
+- **Completed**: Extract deterministic `cSpatialResCount` cell-list bounds/valid-id decision helpers behind additive Rust FFI
+- **Impacted files/modules**: `avida-core/source/main/cSpatialResCount.cc`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/spatial_res_count_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`
+- **Result**: Routed duplicated cell-id bounds checks through Rust helper policies for strict (`< size`) and legacy SetCellList (`<= size`) semantics, preserving C++ traversal/state ownership while locking policy boundaries with Rust+C++ parity tests.
+- **Next candidate**: Extract deterministic `cSpatialResCount::SetPointers` neighbor-link row derivation/masking helper math behind additive Rust FFI while preserving C++ pointer ownership and traversal loops.
+
+- **Completed**: Extract deterministic `cSpatialResCount` wrapped rectangle index helper behind additive Rust FFI
+- **Impacted files/modules**: `avida-core/source/main/cSpatialResCount.cc`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/spatial_res_count_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`
+- **Result**: Routed wrapped rectangle coordinate-to-element index mapping from duplicated inline `Mod(...)` math in `Source`/`Sink` through `avd_src_wrapped_elem_index`, preserving C++ loop/mutation ownership while locking wrap/invalid-dimension behavior with Rust+C++ parity matrices.
+- **Next candidate**: Extract deterministic `cSpatialResCount` cell-list bounds/valid-id decision helper math behind additive Rust FFI while preserving C++ traversal/state ownership.
+
 - **Completed**: Expand Rust coverage gate scope and raise threshold incrementally
 - **Impacted files/modules**: `rust/avida-rust/scripts/ci_coverage_check.sh`, `.github/workflows/ci.yaml`
 - **Result**: Coverage gate now emits a persisted summary artifact, validates representative stable-module rows to catch scope regressions, and raises CI line-coverage threshold from 80% to 82% while preserving deterministic pass.
