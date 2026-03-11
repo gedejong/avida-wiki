@@ -12,6 +12,26 @@ This backlog captures follow-up improvements discovered during the C++ to Rust m
 
 ## Current backlog
 
+- **Completed**: Expand Rust coverage gate scope and raise threshold incrementally
+- **Impacted files/modules**: `rust/avida-rust/scripts/ci_coverage_check.sh`, `.github/workflows/ci.yaml`
+- **Result**: Coverage gate now emits a persisted summary artifact, validates representative stable-module rows to catch scope regressions, and raises CI line-coverage threshold from 80% to 82% while preserving deterministic pass.
+- **Next candidate**: Extract deterministic `cSpatialResCount` wrapped rectangle-to-element index helper math behind additive Rust FFI while preserving C++ traversal/state ownership.
+
+- **Completed**: Provider/history deterministic readability hardening (no ABI drift)
+- **Impacted files/modules**: `rust/avida-rust/src/provider_helpers.rs`, `rust/avida-rust/src/resource_history_helpers.rs`
+- **Result**: Restructured provider ID parsing internals into a typed parse result and simplified nearest-entry scan readability in resource-history helpers, preserving C ABI and return semantics with added duplicate-selection parity coverage.
+- **Next candidate**: Expand Rust coverage gate scope in `rust/avida-rust/scripts/ci_coverage_check.sh` and increment threshold with passing evidence.
+
+- **Completed**: TimeSeries FFI guardrail cleanup using shared handle/output helpers
+- **Impacted files/modules**: `rust/avida-rust/src/time_series_recorder.rs`, `rust/avida-rust/src/common.rs`
+- **Result**: Consolidated pointer/null/output handling through shared `common.rs` accessors for typed/string getter paths, preserving existing ABI and legacy coercion behavior while locking null-handle and out-param non-mutation semantics with explicit tests.
+- **Next candidate**: Apply deterministic readability hardening in `provider_helpers` and `resource_history_helpers` internals while preserving exported ABI and parity behavior.
+
+- **Completed**: Extract deterministic `cSpatialResCount` source/sink scalar helpers behind additive Rust FFI
+- **Impacted files/modules**: `avida-core/source/main/cSpatialResCount.cc`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/spatial_res_count_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`
+- **Result**: Routed source per-cell distribution and clamped sink/cell-outflow delta math through new Rust helpers (`avd_src_source_per_cell`, `avd_src_sink_delta`, `avd_src_cell_outflow_delta`) while keeping C++ grid traversal/indexing and `Rate(...)` state ownership unchanged, with Rust+C++ parity fixtures for scalar behavior and guard semantics.
+- **Next candidate**: Extract deterministic `cSpatialResCount` wrapped rectangle-to-element index helper math behind additive Rust FFI while preserving C++ loop/state ownership.
+
 - **Completed**: Extract deterministic `cSpatialResCount` flow-scalar and range-normalization helpers behind additive Rust FFI
 - **Impacted files/modules**: `avida-core/source/main/cSpatialResCount.cc`, `avida-core/source/main/cResourceCount.cc`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/spatial_res_count_helpers.rs`, `rust/avida-rust/src/lib.rs`, `avida-core/source/targets/unit-tests/main.cc`
 - **Result**: Routed `CheckRanges` span normalization and `FlowMatter` scalar computation through additive Rust helpers with boundary/legacy-guard parity fixtures, while keeping C++ grid traversal and state mutation ownership unchanged.
