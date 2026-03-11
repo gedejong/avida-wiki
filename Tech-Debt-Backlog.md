@@ -12,6 +12,11 @@ This backlog captures follow-up improvements discovered during the C++ to Rust m
 
 ## Current backlog
 
+- **Completed**: Add explicit backtrace-enabled CI validation leg (opt-in path)
+- **Impacted files/modules**: `.github/workflows/ci.yaml`, `build_avida`, `CMakeLists.txt`, `libs/backward-cpp/CMakeLists.txt`
+- **Result**: Added a dedicated CI smoke job that explicitly sets `AVIDA_ENABLE_BACKTRACE=1` for configure/reconfigure + build coverage while preserving default low-noise lanes; also hardened vendored `backward-cpp` alias creation to avoid duplicate-target failures when backtrace mode is enabled.
+- **Next candidate**: Add reviewer checklist + lightweight guardrails to keep new Rust FFI modules aligned with shared `common.rs` pointer-accessor and CString/output-pointer helper conventions.
+
 - **Completed**: Evaluate selective `bitvec` production adoption for `cBitArray` internals
 - **Impacted files/modules**: `rust/avida-rust/src/bit_array.rs`, `rust/avida-rust/benches/critical_paths.rs`, `rust/avida-rust/Cargo.toml`
 - **Result**: Added focused Criterion benchmark coverage for representative `shift`/`increment`/`count` workloads and expanded Rust parity matrices across bitwise ops/width edges; results were mixed to marginal, so production bit-array internals remain on the existing custom bit-field implementation (no ABI changes) while retaining stronger benchmark/parity evidence.
@@ -82,12 +87,6 @@ This backlog captures follow-up improvements discovered during the C++ to Rust m
 - **Impacted files/modules**: `avida-core/tests/analyze_printphenotypes_grouping/config/analyze.cfg`, `avida-core/tests/analyze_printphenotypes_grouping/expected/data/total_task_count`
 - **Risk/impact**: Current fixture validates grouping/count semantics on a compact representative case, but does not yet cover broader reaction/task combinations.
 - **Suggested follow-up**: Add 2-3 additional sequence families (including edge-case non-viable and high-task variants) while keeping expected output compact and deterministic.
-- **Priority**: low
-
-- **Title**: Add explicit CI backtrace-enabled validation leg (opt-in path)
-- **Impacted files/modules**: `.github/workflows/ci.yaml`, `build_avida`, `CMakeLists.txt`
-- **Risk/impact**: Default CI path is now intentionally low-noise with backtrace disabled unless opted in; regressions in optional backtrace plumbing could go undetected.
-- **Suggested follow-up**: Add a targeted CI leg that sets `AVIDA_ENABLE_BACKTRACE=1` and runs configure/build smoke checks so optional diagnostics remain healthy.
 - **Priority**: low
 
 - **Completed**: Expand manager/provider cross-module ID classify matrix into consistency fixtures
