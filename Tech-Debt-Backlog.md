@@ -12,6 +12,16 @@ This backlog captures follow-up improvements discovered during the C++ to Rust m
 
 ## Current backlog
 
+- **Completed**: Evaluate selective `bitvec` production adoption for `cBitArray` internals
+- **Impacted files/modules**: `rust/avida-rust/src/bit_array.rs`, `rust/avida-rust/benches/critical_paths.rs`, `rust/avida-rust/Cargo.toml`
+- **Result**: Added focused Criterion benchmark coverage for representative `shift`/`increment`/`count` workloads and expanded Rust parity matrices across bitwise ops/width edges; results were mixed to marginal, so production bit-array internals remain on the existing custom bit-field implementation (no ABI changes) while retaining stronger benchmark/parity evidence.
+- **Next candidate**: Add a dedicated CI matrix leg for explicit backtrace-enabled builds (`AVIDA_ENABLE_BACKTRACE=1`) to keep optional diagnostics paths continuously tested.
+
+- **Completed**: Harden CMake reconfigure robustness and default build log signal-to-noise
+- **Impacted files/modules**: `CMakeLists.txt`, `build_avida`, `.github/workflows/ci.yaml`, `avida-core/CMakeLists.txt`
+- **Result**: Locked low-noise default configure behavior (backtrace path opt-in), added CI configure/reconfigure smoke check in one build tree, and preserved Linux static link-order correctness for `aptostatic` resolution.
+- **Next candidate**: Add a dedicated CI matrix leg for explicit backtrace-enabled builds (`AVIDA_ENABLE_BACKTRACE=1`) to keep optional diagnostics path continuously tested without polluting default logs.
+
 - **Completed**: Broaden `Data::Package` primitive formatting parity matrix coverage
 - **Impacted files/modules**: `rust/avida-rust/src/package.rs`, `avida-core/source/targets/unit-tests/main.cc`, `libs/apto/include/apto/core/StringUtils.h`
 - **Result**: Expanded shared Rust/C++ parity matrices for `Wrap<bool/int/double>::StringValue` across boundary integers, signed zero, denormals, `%g` threshold cutovers, and NaN/Inf, keeping existing FFI surface unchanged while locking `Apto::AsStr` parity.
@@ -74,16 +84,10 @@ This backlog captures follow-up improvements discovered during the C++ to Rust m
 - **Suggested follow-up**: Add 2-3 additional sequence families (including edge-case non-viable and high-task variants) while keeping expected output compact and deterministic.
 - **Priority**: low
 
-- **Title**: Audit CMake policy and option compatibility after 3.20 uplift
-- **Impacted files/modules**: `CMakeLists.txt`, `avida-core/CMakeLists.txt`, `build_avida`, vendor `CMakeLists.txt`
-- **Risk/impact**: Version uplift is complete, but latent policy/option assumptions can still fail on fresh toolchains or cache reuse.
-- **Suggested follow-up**: Add a clean-configure CI step that validates first-pass and reconfigure behavior with CMake 3.20+.
-- **Priority**: low
-
-- **Title**: Harden CMake reconfigure behavior for vendored `backward-cpp`
-- **Impacted files/modules**: `libs/backward-cpp/CMakeLists.txt`, top-level configure flow
-- **Risk/impact**: In-place reconfigure can hit `Backward::Backward` alias redefinition when stale cache state persists, causing first-pass configure failures.
-- **Suggested follow-up**: Guard alias creation or avoid repeated vendor configure state in existing build trees.
+- **Title**: Add explicit CI backtrace-enabled validation leg (opt-in path)
+- **Impacted files/modules**: `.github/workflows/ci.yaml`, `build_avida`, `CMakeLists.txt`
+- **Risk/impact**: Default CI path is now intentionally low-noise with backtrace disabled unless opted in; regressions in optional backtrace plumbing could go undetected.
+- **Suggested follow-up**: Add a targeted CI leg that sets `AVIDA_ENABLE_BACKTRACE=1` and runs configure/build smoke checks so optional diagnostics remain healthy.
 - **Priority**: low
 
 - **Completed**: Expand manager/provider cross-module ID classify matrix into consistency fixtures
@@ -95,10 +99,4 @@ This backlog captures follow-up improvements discovered during the C++ to Rust m
 - **Impacted files/modules**: `avida-core/source/main/cResourceCount.cc`, `rust/avida-rust/src/resource_count_helpers.rs`, `avida-core/include/private/rust/running_stats_ffi.h`, `avida-core/source/targets/unit-tests/main.cc`
 - **Result**: Routed `m_spatial_update - m_last_updated` derivation through new Rust helper `avd_rc_num_spatial_updates` with explicit saturating boundary behavior and dual-language parity fixtures, while leaving spatial mutation/state transitions in C++.
 - **Next candidate**: Extend shared CString/output-pointer helper adoption to remaining Rust FFI modules.
-
-- **Title**: Evaluate selective `bitvec` production adoption after parity prototype
-- **Impacted files/modules**: `rust/avida-rust/src/bit_array.rs`, `rust/avida-rust/Cargo.toml`
-- **Risk/impact**: A `bitvec` parity prototype now exists in tests, but production code still uses custom bit-field logic; adoption without targeted profiling could add complexity without runtime gains.
-- **Suggested follow-up**: Benchmark critical bit operations and adopt `bitvec` in production only where measured maintainability/performance wins are clear.
-- **Priority**: low
 
