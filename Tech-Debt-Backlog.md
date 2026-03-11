@@ -12,6 +12,11 @@ This backlog captures follow-up improvements discovered during the C++ to Rust m
 
 ## Current backlog
 
+- **Completed**: Harden `Data::TimeSeriesRecorder` typed getter parse-policy parity with legacy `Apto::StrAs`
+- **Impacted files/modules**: `rust/avida-rust/src/time_series_recorder.rs`, `avida-core/source/targets/unit-tests/main.cc`, `avida-core/source/data/TimeSeriesRecorder.cc`, `libs/apto/include/apto/core/StringUtils.h`
+- **Result**: Updated Rust typed coercion to legacy semantics (`bool` accepts only exact true aliases, `int`/`double` use C-style coercion with partial parses) and locked behavior via shared Rust/C++ edge-case matrix fixtures, without ABI expansion.
+- **Next candidate**: Broaden `Data::Package` primitive formatting parity matrix coverage against `Apto::AsStr` for boundary integer/float forms.
+
 - **Completed**: Extract deterministic `cEventList` trigger/timing parsing behind additive Rust helpers
 - **Impacted files/modules**: `avida-core/source/main/cEventList.cc`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/event_list_helpers.rs`, `rust/avida-rust/src/lib.rs`, `avida-core/source/targets/unit-tests/main.cc`
 - **Result**: Routed trigger alias classification and timing tuple decoding (`start`, `start:interval`, `start:interval:stop`, including `begin`/`all`/`once`/`end`) through Rust C ABI helpers with null/invalid guards and dual-language parity fixtures, while keeping event creation and state mutation in C++.
@@ -76,11 +81,10 @@ This backlog captures follow-up improvements discovered during the C++ to Rust m
 - **Suggested follow-up**: Guard alias creation or avoid repeated vendor configure state in existing build trees.
 - **Priority**: low
 
-- **Title**: Expand manager/provider cross-module classify matrix into consistency fixtures
-- **Impacted files/modules**: `avida-core/source/targets/unit-tests/main.cc`, `avida-core/tests/*`, `rust/avida-rust/src/provider_helpers.rs`
-- **Risk/impact**: Unit-level classify/dispatch matrix now covers standard/argumented/malformed ids, but end-to-end consistency fixtures do not yet stress broader id-shape variation through full run workflows.
-- **Suggested follow-up**: Add a compact consistency fixture set that exercises additional malformed and nested-bracket-like id forms across provider/manager runtime dispatch paths.
-- **Priority**: low
+- **Completed**: Expand manager/provider cross-module ID classify matrix into consistency fixtures
+- **Impacted files/modules**: `avida-core/source/data/Manager.cc`, `avida-core/source/data/Provider.cc`, `rust/avida-rust/src/provider_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`, `avida-core/tests/manager_provider_id_dispatch/*`
+- **Result**: Hardened manager/provider dispatch around existing `avd_provider_classify_id` seam, expanded Rust+C++ edge-shape matrices (standard/argumented/malformed/nested-bracket-like IDs), and added a focused consistency fixture (`manager_provider_id_dispatch`) that exercises runtime data-id dispatch flow.
+- **Next candidate**: Broaden `Data::Package` primitive formatting parity matrix coverage against `Apto::AsStr` for boundary integer/float forms.
 
 - **Completed**: Expand Wave 5 `cResourceCount` seam to deterministic spatial-update scheduling helpers
 - **Impacted files/modules**: `avida-core/source/main/cResourceCount.cc`, `rust/avida-rust/src/resource_count_helpers.rs`, `avida-core/include/private/rust/running_stats_ffi.h`, `avida-core/source/targets/unit-tests/main.cc`
@@ -93,21 +97,9 @@ This backlog captures follow-up improvements discovered during the C++ to Rust m
 - **Suggested follow-up**: Add a larger shared bool/int/double fixture matrix (boundary integers, denormals, exponent thresholds, signed zero) and verify Rust/C++ output equivalence against `Apto::AsStr`.
 - **Priority**: low
 
-- **Title**: Harden `Data::TimeSeriesRecorder` typed parse policy parity across C++ and Rust
-- **Impacted files/modules**: `rust/avida-rust/src/time_series_recorder.rs`, `avida-core/source/data/TimeSeriesRecorder.cc`
-- **Risk/impact**: Typed getter parsing now rejects malformed entries safely, but accepted text forms (especially for bool/string edge forms) may still diverge from historic `Apto::StrAs` behavior in obscure inputs.
-- **Suggested follow-up**: Add focused parity tests for legacy string forms and decide whether to tighten or exactly emulate prior coercion rules.
-- **Priority**: low
-
 - **Title**: Evaluate selective `bitvec` production adoption after parity prototype
 - **Impacted files/modules**: `rust/avida-rust/src/bit_array.rs`, `rust/avida-rust/Cargo.toml`
 - **Risk/impact**: A `bitvec` parity prototype now exists in tests, but production code still uses custom bit-field logic; adoption without targeted profiling could add complexity without runtime gains.
 - **Suggested follow-up**: Benchmark critical bit operations and adopt `bitvec` in production only where measured maintainability/performance wins are clear.
-- **Priority**: low
-
-- **Title**: Add broader manager/provider cross-module ID semantics matrix tests
-- **Impacted files/modules**: `avida-core/source/targets/unit-tests/main.cc`, `avida-core/source/data/Manager.cc`, `avida-core/source/data/Provider.cc`
-- **Risk/impact**: Manager now routes major classification/split paths through shared Rust helpers, but regression risk remains for less common ID shapes unless checked across both modules with one parity matrix.
-- **Suggested follow-up**: Add a compact shared test matrix (standard/argumented/malformed variants) exercised through both Manager and Provider-facing paths.
 - **Priority**: low
 
