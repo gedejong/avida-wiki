@@ -12,6 +12,16 @@ This backlog captures follow-up improvements discovered during the C++ to Rust m
 
 ## Current backlog
 
+- **Completed**: Extract deterministic `cEventList` trigger/timing parsing behind additive Rust helpers
+- **Impacted files/modules**: `avida-core/source/main/cEventList.cc`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/event_list_helpers.rs`, `rust/avida-rust/src/lib.rs`, `avida-core/source/targets/unit-tests/main.cc`
+- **Result**: Routed trigger alias classification and timing tuple decoding (`start`, `start:interval`, `start:interval:stop`, including `begin`/`all`/`once`/`end`) through Rust C ABI helpers with null/invalid guards and dual-language parity fixtures, while keeping event creation and state mutation in C++.
+- **Next candidate**: Lock legacy text-coercion parity for remaining parser seams (`Data::Package` and `Data::TimeSeriesRecorder`) with shared Rust/C++ matrix fixtures.
+
+- **Completed**: Extract deterministic `cResourceCount::Setup` precalc table derivation behind additive Rust helper
+- **Impacted files/modules**: `avida-core/source/main/cResourceCount.cc`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/resource_count_helpers.rs`, `rust/avida-rust/src/common.rs`, `avida-core/source/targets/unit-tests/main.cc`
+- **Result**: Routed setup-time recurrence table generation (`decay_precalc`/`inflow_precalc`) through new Rust FFI helper with parity-checked outputs and null/invalid guard fixtures, while preserving C++ ownership and runtime update behavior.
+- **Next candidate**: Keep new FFI modules aligned with shared pointer-accessor macro and CString helper conventions using a reviewer checklist.
+
 - **Completed**: Harden cross-platform determinism for `sex` and `shaded_green_beard_instructions`
 - **Impacted files/modules**: `avida-core/tests/sex/config/avida.cfg`, `avida-core/tests/sex/config/events.cfg`, `avida-core/tests/shaded_green_beard_instructions/config/avida.cfg`, `avida-core/tests/shaded_green_beard_instructions/config/eventsFullPopTest.cfg`, fixture `expected/data/*`, `.github/workflows/ci.yaml`
 - **Result**: Pinned fixture-local determinism knobs, reduced high-variance assertion surface (dominant/average/time/archive outputs), and improved CI diagnostics with single-run non-blocking diagnostics, explicit diff threshold, XML report artifacts, and selected-test manifests.
