@@ -12,10 +12,15 @@ This backlog captures follow-up improvements discovered during the C++ to Rust m
 
 ## Current backlog
 
+- **Completed**: Broaden `Data::Package` primitive formatting parity matrix coverage
+- **Impacted files/modules**: `rust/avida-rust/src/package.rs`, `avida-core/source/targets/unit-tests/main.cc`, `libs/apto/include/apto/core/StringUtils.h`
+- **Result**: Expanded shared Rust/C++ parity matrices for `Wrap<bool/int/double>::StringValue` across boundary integers, signed zero, denormals, `%g` threshold cutovers, and NaN/Inf, keeping existing FFI surface unchanged while locking `Apto::AsStr` parity.
+- **Next candidate**: Evaluate selective `bitvec` production adoption for `bit_array` where benchmarked wins justify added dependency/complexity.
+
 - **Completed**: Harden `Data::TimeSeriesRecorder` typed getter parse-policy parity with legacy `Apto::StrAs`
 - **Impacted files/modules**: `rust/avida-rust/src/time_series_recorder.rs`, `avida-core/source/targets/unit-tests/main.cc`, `avida-core/source/data/TimeSeriesRecorder.cc`, `libs/apto/include/apto/core/StringUtils.h`
 - **Result**: Updated Rust typed coercion to legacy semantics (`bool` accepts only exact true aliases, `int`/`double` use C-style coercion with partial parses) and locked behavior via shared Rust/C++ edge-case matrix fixtures, without ABI expansion.
-- **Next candidate**: Broaden `Data::Package` primitive formatting parity matrix coverage against `Apto::AsStr` for boundary integer/float forms.
+- **Next candidate**: Evaluate selective `bitvec` production adoption for `bit_array` where benchmarked wins justify added dependency/complexity.
 
 - **Completed**: Extract deterministic `cEventList` trigger/timing parsing behind additive Rust helpers
 - **Impacted files/modules**: `avida-core/source/main/cEventList.cc`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/event_list_helpers.rs`, `rust/avida-rust/src/lib.rs`, `avida-core/source/targets/unit-tests/main.cc`
@@ -84,18 +89,12 @@ This backlog captures follow-up improvements discovered during the C++ to Rust m
 - **Completed**: Expand manager/provider cross-module ID classify matrix into consistency fixtures
 - **Impacted files/modules**: `avida-core/source/data/Manager.cc`, `avida-core/source/data/Provider.cc`, `rust/avida-rust/src/provider_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`, `avida-core/tests/manager_provider_id_dispatch/*`
 - **Result**: Hardened manager/provider dispatch around existing `avd_provider_classify_id` seam, expanded Rust+C++ edge-shape matrices (standard/argumented/malformed/nested-bracket-like IDs), and added a focused consistency fixture (`manager_provider_id_dispatch`) that exercises runtime data-id dispatch flow.
-- **Next candidate**: Broaden `Data::Package` primitive formatting parity matrix coverage against `Apto::AsStr` for boundary integer/float forms.
+- **Next candidate**: Evaluate selective `bitvec` production adoption for `bit_array` where benchmarked wins justify added dependency/complexity.
 
 - **Completed**: Expand Wave 5 `cResourceCount` seam to deterministic spatial-update scheduling helpers
 - **Impacted files/modules**: `avida-core/source/main/cResourceCount.cc`, `rust/avida-rust/src/resource_count_helpers.rs`, `avida-core/include/private/rust/running_stats_ffi.h`, `avida-core/source/targets/unit-tests/main.cc`
 - **Result**: Routed `m_spatial_update - m_last_updated` derivation through new Rust helper `avd_rc_num_spatial_updates` with explicit saturating boundary behavior and dual-language parity fixtures, while leaving spatial mutation/state transitions in C++.
 - **Next candidate**: Extend shared CString/output-pointer helper adoption to remaining Rust FFI modules.
-
-- **Title**: Broaden `Data::Package` primitive formatting parity matrix coverage
-- **Impacted files/modules**: `rust/avida-rust/src/package.rs`, `avida-core/source/targets/unit-tests/main.cc`, `libs/apto/include/apto/core/StringUtils.h`
-- **Risk/impact**: Primitive `Wrap<T>::StringValue` is now Rust-backed, but only a compact set of `%g` edge cases is currently locked by tests; rare legacy formatting edge values may regress silently.
-- **Suggested follow-up**: Add a larger shared bool/int/double fixture matrix (boundary integers, denormals, exponent thresholds, signed zero) and verify Rust/C++ output equivalence against `Apto::AsStr`.
-- **Priority**: low
 
 - **Title**: Evaluate selective `bitvec` production adoption after parity prototype
 - **Impacted files/modules**: `rust/avida-rust/src/bit_array.rs`, `rust/avida-rust/Cargo.toml`
