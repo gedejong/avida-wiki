@@ -14,25 +14,30 @@ This backlog captures follow-up improvements discovered during the C++ to Rust m
 
 - Completed entries have been moved to `documentation/archive/tech-debt-backlog-completed.md`.
 
+- **Completed**: Extract deterministic `cResourceCount` gradient configuration assignment policy (`SetGradientCount` setter sequencing) behind additive Rust FFI
+- **Impacted files/modules**: `avida-core/source/main/cResourceCount.cc`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/resource_count_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`
+- **Result**: Routed `SetGradientCount` setter-order policy through new Rust helpers (`avd_rc_gradient_setter_count`, `avd_rc_gradient_setter_opcode`) while keeping C++ ownership/mutation sites intact and preserving final `ResetGradRes(ctx, worldx, worldy)` sequencing; added Rust and C++ parity/guard tests for sequence count/order mapping.
+- **Next candidate**: Extract deterministic `cResourceCount` gradient scalar setter call policy (`SetGradientPlatInflow`/`SetGradientPlatOutflow`/`SetGradientConeInflow`/`SetGradientConeOutflow`/`SetGradientInflow`) behind additive Rust FFI while preserving C++ ownership and direct setter semantics.
+
 - **Completed**: Extract deterministic `cResourceCount` write-path selection policy wiring behind additive Rust FFI
 - **Impacted files/modules**: `avida-core/source/main/cResourceCount.cc`, `rust/avida-rust/src/resource_count_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`
 - **Result**: Routed geometry-based write-path branch selection in `Set`/`ModifyCell` through Rust helper `avd_rc_is_spatial_geometry`, preserving C++ mutation sequencing, per-cell update side effects (`SetModified`), and ownership while locking helper policy behavior with refreshed C++ geometry/payload matrix checks.
-- **Next candidate**: Extract deterministic `cResourceCount` gradient configuration assignment policy (setter sequencing in `SetGradientCount`) behind additive Rust FFI while preserving C++ ownership and `ResetGradRes` ordering.
+- **Next candidate**: Extract deterministic `cResourceCount` gradient scalar setter call policy (`SetGradientPlatInflow`/`SetGradientPlatOutflow`/`SetGradientConeInflow`/`SetGradientConeOutflow`/`SetGradientInflow`) behind additive Rust FFI while preserving C++ ownership and direct setter semantics.
 
 - **Completed**: Extract deterministic `cResourceCount` `SetCellResources` write-path policy wiring behind additive Rust FFI
 - **Impacted files/modules**: `avida-core/source/main/cResourceCount.cc`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/resource_count_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`
 - **Result**: Routed `SetCellResources` geometry-based write-path selection through new Rust helper `avd_rc_setcell_write_path_kind`, preserving C++ traversal order, ownership, and intentional global/partial no-op behavior while locking mapping and payload-selection parity with refreshed Rust and C++ helper tests.
-- **Next candidate**: Extract deterministic `cResourceCount` gradient configuration assignment policy (setter sequencing in `SetGradientCount`) behind additive Rust FFI while preserving C++ ownership and `ResetGradRes` ordering.
+- **Next candidate**: Extract deterministic `cResourceCount` gradient scalar setter call policy (`SetGradientPlatInflow`/`SetGradientPlatOutflow`/`SetGradientConeInflow`/`SetGradientConeOutflow`/`SetGradientInflow`) behind additive Rust FFI while preserving C++ ownership and direct setter semantics.
 
 - **Completed**: Extract deterministic `cResourceCount` spatial resource initialization/setup/resize policy wiring behind additive Rust FFI
 - **Impacted files/modules**: `avida-core/source/main/cResourceCount.cc`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/resource_count_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`
 - **Result**: Routed setup-time geometry bucketing, spatial rectangle logging policy, and resize cell-count derivation through new Rust helpers (`avd_rc_setup_path_kind`, `avd_rc_should_log_spatial_rectangles`, `avd_rc_resize_cell_count`) while preserving C++ allocation ownership, traversal order, and legacy setup/resize semantics with refreshed Rust and C++ policy-matrix tests.
-- **Next candidate**: Extract deterministic `cResourceCount` gradient configuration assignment policy (setter sequencing in `SetGradientCount`) behind additive Rust FFI while preserving C++ ownership and `ResetGradRes` ordering.
+- **Next candidate**: Extract deterministic `cResourceCount` gradient scalar setter call policy (`SetGradientPlatInflow`/`SetGradientPlatOutflow`/`SetGradientConeInflow`/`SetGradientConeOutflow`/`SetGradientInflow`) behind additive Rust FFI while preserving C++ ownership and direct setter semantics.
 
 - **Completed**: Extract deterministic `cResourceCount` read-path selection policy wiring behind additive Rust FFI
 - **Impacted files/modules**: `avida-core/source/main/cResourceCount.cc`, `rust/avida-rust/src/resource_count_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`
 - **Result**: Routed geometry-based read-path branching for `cResourceCount` read APIs through Rust helper `avd_rc_read_path_kind` via `ReadCellResourceValue` and aggregate `Get` path, preserving `DoUpdates` sequencing/ownership while locking mapping and payload-selection parity with refreshed C++ helper tests.
-- **Next candidate**: Extract deterministic `cResourceCount` gradient configuration assignment policy (setter sequencing in `SetGradientCount`) behind additive Rust FFI while preserving C++ ownership and `ResetGradRes` ordering.
+- **Next candidate**: Extract deterministic `cResourceCount` gradient scalar setter call policy (`SetGradientPlatInflow`/`SetGradientPlatOutflow`/`SetGradientConeInflow`/`SetGradientConeOutflow`/`SetGradientInflow`) behind additive Rust FFI while preserving C++ ownership and direct setter semantics.
 
 - **Completed**: Extract deterministic `cSpatialResCount::FlowAll` per-neighbor transfer accumulation helper math behind additive Rust FFI
 - **Impacted files/modules**: `avida-core/source/main/cSpatialResCount.cc`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/spatial_res_count_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`
