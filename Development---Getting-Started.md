@@ -1,3 +1,5 @@
+> **Note (2026-11-13).** This page describes the C++ program. The native viewers and the C++ core were removed from the tree (the git tag `cpp-final` has them). The current documentation is at https://gedejong.github.io/avida-rs/.
+
 These instructions will guide you through the process of setting up tools, obtaining the source code, building the suite, and provide an overview of the source code structure.
 
 ## Development Tools
