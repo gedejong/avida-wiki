@@ -14,6 +14,25 @@ This backlog captures follow-up improvements discovered during the C++ to Rust m
 
 - Completed entries have been moved to `documentation/archive/tech-debt-backlog-completed.md`.
 
+### Composed-computation entries (2026-11-15)
+
+- **Completed**: Stage 3 experiment, modular heads set against stock set on the adder ladder (extensions beyond the C++; `docs/guides/experiment-composed-computation.md`)
+- **Impacted files/modules**: `avida-core/support/config/instset-heads-modular.cfg`, `avida-core/support/config/environment-adder-ladder.cfg`, `rust/avida-native/crates/tasks/src/eval_field.rs`, `rust/avida-native/crates/world/src/knockout.rs`, `rust/avida-native/crates/viewmodel/src/compare/`
+- **Result**: 20 runs (10 seeds per arm, 100,000 updates, 60 x 60, exact mode) finished. Negative: the highest rung reached was HALFADD_PLANES, by 1 modular seed and 3 stock seeds (Fisher exact p = 0.58); no rung above it by either arm. In 12 runs NOT or NAND appeared and was lost before update 4,000, and 3 more never held a rung, with genomes shrunk from 100 to 19 to 24 instructions.
+- **Next candidate**: stage 4 (sex, population size, changing environments, one factor at a time), prepared in the lab folder `14-search-conditions` and waiting for the maintainer's decision on scope and run time.
+
+- **Title**: The reuse measures are defined for too few runs to compare arms
+- **Impacted files/modules**: `rust/avida-native/crates/world/src/knockout.rs`, `rust/avida-native/crates/viewmodel/src/compare/`
+- **Risk/impact**: The reuse index and shared-site count need a dominant genotype that performs two tasks. In stage 3 that left n = 1 against n = 3, so the comparison says nothing. Shared sites also count instructions early in a straight pipeline (`IO`, `nand`), which is not reuse through a subroutine.
+- **Suggested follow-up**: Report the measures over the most abundant task-performing genotype as well as the dominant one, and add a measure that counts only code reached from two or more `call` sites.
+- **Priority**: medium
+
+- **Title**: Small defects in the arm-comparison view
+- **Impacted files/modules**: `rust/avida-native/crates/viewmodel/src/compare/`, `rust/avida-native/crates/gui/src/`
+- **Risk/impact**: A median bar can cover a dot of the same value; the "highest rung" measure is printed as the rung's number plus one with 0 for none, which reads as an off-by-one next to the rung table.
+- **Suggested follow-up**: Offset the median bar and print rung names for the rung measures.
+- **Priority**: low
+
 ### Native port entries (2026-11-12)
 
 - **Completed**: Standalone native Rust port of the simulator, GUI and TUI in the untracked workspace `rust/avida-native`
