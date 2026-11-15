@@ -39,11 +39,11 @@ This backlog captures follow-up improvements discovered during the C++ to Rust m
 - **Result**: A `avida` binary that needs no C++ runs population runs and analyze mode, and reproduces the reference binary `cbuild/work/avida` byte for byte on the consistency suite over `avida-core/tests/*` (last measured 2026-11-12: 121 tests, 85 same, 34 trivial differences, 0 DIFF, 1 unsupported because the reference crashes on `SLICING_METHOD 4`, 1 reference timeout), on 76 pinned names in `crates/avida/tests/consistency_passing.txt`, on 242 action fixture cases under `crates/avida/tests/actions/`, and on instruction-trace comparisons in `crates/hardware/tests`. Default 3000-update run, seed 42: reference about 57 to 64 s user, native about 47 s, identical output; with gene transfer on (46,000 transfers), reference 41 to 42 s, native 34 to 36 s, identical output. Details in `rust-migration-waves.md`, section "Native port wave (2026-11-12)".
 - **Next candidate**: resolve the open decisions below, starting with whether the native port supersedes the FFI migration, because that decision determines whether any further `cHardwareCPU.cc` handler work is worth doing.
 
-- **Title**: CI does not run the consistency suite
-- **Impacted files/modules**: `.github/workflows/ci.yaml`, `rust/avida-native/tools/run_suite.py`, `avida-core/tests/*`
-- **Risk/impact**: The workflow runs `cargo fmt`, `cargo clippy` and `cargo test` on the workspace (the desktop app in a lane of its own). It does not build the reference binary from the tag `cpp-final` or run the 121-test comparison, so the figure "85 same, 34 trivial, no DIFF" rests on manual runs and a parity regression is caught only when someone runs the suite by hand.
-- **Suggested follow-up**: Add a lane that checks out `cpp-final`, builds `cbuild/work/avida` (cached by the tag's hash), runs `python3 tools/run_suite.py` and fails on any DIFF, with the result table kept as an artefact. Confirm first that the existing lanes pass on GitHub; that has not been checked.
-- **Priority**: high
+- **Title**: Output on Linux x86-64 is not byte-identical to macOS arm64
+- **Impacted files/modules**: `rust/avida-native/crates/apto/src/rng.rs`, `rust/avida-native/crates/apto/src/stat.rs`, `.github/workflows/ci.yaml`
+- **Risk/impact**: Since 2026-11-15 CI runs format, lint, tests and the consistency suite (from a snapshot of the reference output, `tools/suite_ref.py`) on macOS arm64, and passes there. On Linux x86-64 two `apto` tests fail: one normal deviate of 200 differs in the last bit (the platform's `log`/`sqrt`), and a NaN has the other sign. A run on Linux can therefore diverge from the same seed on macOS, and nothing tests Linux apart from the desktop app's lane.
+- **Suggested follow-up**: Decide whether results must be reproducible across platforms. If so, replace the platform math calls in `apto` by a portable implementation (for example the `libm` crate) and measure what that does to the suite; if not, say so in the user documentation.
+- **Priority**: medium
 
 - **Title**: Remaining feature gaps and `unsupported:` stops in the native port
 - **Impacted files/modules**: `rust/avida-native/crates/hardware/src`, `rust/avida-native/crates/world/src`, `rust/avida-native/crates/analyze/src` (about 140 stop sites in all)
