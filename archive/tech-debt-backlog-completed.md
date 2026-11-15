@@ -123,3 +123,105 @@ Archived on 2026-03-11 from `documentation/Tech-Debt-Backlog.md`.
 - **Impacted files/modules**: `avida-core/source/main/cResourceCount.cc`, `rust/avida-rust/src/resource_count_helpers.rs`, `avida-core/include/private/rust/running_stats_ffi.h`, `avida-core/source/targets/unit-tests/main.cc`
 - **Result**: Routed `m_spatial_update - m_last_updated` derivation through new Rust helper `avd_rc_num_spatial_updates` with explicit saturating boundary behavior and dual-language parity fixtures, while leaving spatial mutation/state transitions in C++.
 - **Next candidate**: Extend shared CString/output-pointer helper adoption to remaining Rust FFI modules.
+
+### Moved from the backlog on 2026-11-15 (FFI migration records and resolved decisions)
+
+- **Title**: Open decision (maintainer): does the native port supersede the FFI migration in `rust/avida-rust`?
+- **Resolved 2026-11-12**: the maintainer ruled that the native port supersedes the FFI migration. `rust/avida-rust` and the C++ core were removed; the tag `cpp-final` is the last commit that has them. The text below is kept as the record of the question.
+- **Impacted files/modules**: `rust/avida-rust/`, `avida-core/source/cpu/cHardwareCPU.cc`, `avida-core/source/cpu/cHardwareFFI.cc`, `rust-migration-*.md`, `CLAUDE.md` (migration state and PO priorities)
+- **Risk/impact**: The FFI track (807 `avd_*` exports, 372/518 CPU handlers delegating, roughly 28K lines of Rust) and the native track solve the same problem in two ways. If both continue, effort on the remaining 146 handlers and on `Divide_Main`/`Allocate_Main` ownership (FFI Wave 14) duplicates work the native `hardware` and `world` crates already contain. If the native port is accepted, that FFI work becomes moot; if it is not, the native workspace needs an owner.
+- **Suggested follow-up**: Maintainer decides. Until then, treat the FFI "Next candidate" entries in `rust-migration-waves.md` (mating-type and `Inst_Repro` handlers, then `Inst_Collect*`) as paused rather than cancelled, and do not start new FFI slices. `CLAUDE.md` still lists those FFI priorities; it was not edited as part of this documentation update.
+- **Priority**: high
+
+- **Title**: Open decision (maintainer): commit strategy for the untracked workspace
+- **Resolved 2026-11-12**: the workspace was committed on the branch `native-rust-port` and pushed to `gedejong/avida-rs` on 2026-11-13. The text below is kept as the record of the question.
+- **Impacted files/modules**: `rust/avida-native/` (including `Cargo.lock`, `docs/ontology.json`, `docs/test_matrix.json`, `target/`), `.gitignore`
+- **Risk/impact**: The whole workspace exists only in the working tree. A lost working directory loses all of it. A single commit of 189K lines is hard to review; `target/` is excluded by `.gitignore`.
+- **Suggested follow-up**: Decide between one import commit per crate in layer order (`apto` to `world`, then `analyze`, `script`, `avida`, then `session`, `viewmodel`, `gui`, `tui`) and a single import commit with the architecture documents first. `target/` is already ignored (`.gitignore` line 124). Stage files explicitly, as the slice workflow requires, and avoid unrelated submodule pointer changes.
+- **Priority**: high
+
+- **Title**: Open decision (maintainer): retire `rust/avida-rust` and the C++ once the port is accepted
+- **Resolved 2026-11-12**: the maintainer had `rust/avida-rust` and the ported C++ removed; the tag `cpp-final` keeps them and the reference binary is built from it.
+- **Impacted files/modules**: `rust/avida-rust/`, `avida-core/`, `libs/apto/`, `cbuild/`, `build_avida`, `run_tests`, `abi/avd_symbols_baseline.txt`
+- **Risk/impact**: The C++ binary is the behavioural reference for every validation above, and it is built from the C++/FFI hybrid. Removing either before acceptance removes the oracle. The retirement policy in `rust-migration-execution-playbook.md` (stabilised through CI, no remaining call sites, isolated reviewable diff) was written for the FFI track and needs a native-port reading.
+- **Suggested follow-up**: Define acceptance criteria first (for example zero DIFF on the suite for a stated number of weeks, the feature gaps below closed or accepted, human review of the front ends). Then archive rather than delete: keep a tag of the last hybrid commit, and keep a frozen reference binary for the consistency suite.
+- **Priority**: medium
+
+- **Title**: Human review of the GUI and TUI in real windows and terminals
+- **Resolved 2026-11-14**: the maintainer judged the desktop app in a real window ("the window looks good") and the terminal interface in a real terminal ("tui looks good. No obvious bugs so far").
+- **Impacted files/modules**: `rust/avida-native/crates/gui`, `rust/avida-native/crates/tui`, `rust/avida-native/crates/viewmodel`
+- **Risk/impact**: Both front ends have unit and snapshot tests (`gui` 104, `tui` 105, `viewmodel` 28 `#[test]` attributes) but those cannot judge layout, legibility, input handling, resize behaviour or terminal compatibility. No human has reviewed them in a real window or terminal.
+- **Suggested follow-up**: A maintainer session covering: egui at several window sizes and display scales, ratatui in at least two terminal emulators and over ssh, a long run for responsiveness of the session thread, and the pause and step controls against the `Stepper`. Record findings as separate entries.
+- **Priority**: medium
+
+- **Completed**: Extract deterministic `cResourceCount` gradient configuration assignment policy (`SetGradientCount` setter sequencing) behind additive Rust FFI
+- **Impacted files/modules**: `avida-core/source/main/cResourceCount.cc`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/resource_count_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`
+- **Result**: Routed `SetGradientCount` setter-order policy through new Rust helpers (`avd_rc_gradient_setter_count`, `avd_rc_gradient_setter_opcode`) while keeping C++ ownership/mutation sites intact and preserving final `ResetGradRes(ctx, worldx, worldy)` sequencing; added Rust and C++ parity/guard tests for sequence count/order mapping.
+- **Next candidate**: Extract deterministic `cResourceCount` gradient variable inflow setter call policy (`SetGradPlatVarInflow`) behind additive Rust FFI while preserving C++ ownership, context threading, and direct setter semantics.
+
+- **Completed**: Extract deterministic `cResourceCount` gradient scalar setter call policy behind additive Rust FFI
+- **Impacted files/modules**: `avida-core/source/main/cResourceCount.cc`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/resource_count_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`
+- **Result**: Routed scalar gradient setter wrappers (`SetGradientPlatInflow`, `SetGradientPlatOutflow`, `SetGradientConeInflow`, `SetGradientConeOutflow`, `SetGradientInflow`) through new Rust opcode policy helpers (`avd_rc_gradient_scalar_setter_count`, `avd_rc_gradient_scalar_setter_opcode`) while preserving C++ assertions, direct setter calls, and ownership; added Rust and C++ sequence/order/guard parity coverage.
+- **Next candidate**: Extract deterministic `cResourceCount` gradient variable inflow setter call policy (`SetGradPlatVarInflow`) behind additive Rust FFI while preserving C++ ownership, context threading, and direct setter semantics.
+
+- **Completed**: Extract deterministic `cResourceCount` write-path selection policy wiring behind additive Rust FFI
+- **Impacted files/modules**: `avida-core/source/main/cResourceCount.cc`, `rust/avida-rust/src/resource_count_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`
+- **Result**: Routed geometry-based write-path branch selection in `Set`/`ModifyCell` through Rust helper `avd_rc_is_spatial_geometry`, preserving C++ mutation sequencing, per-cell update side effects (`SetModified`), and ownership while locking helper policy behavior with refreshed C++ geometry/payload matrix checks.
+- **Next candidate**: Extract deterministic `cResourceCount` gradient variable inflow setter call policy (`SetGradPlatVarInflow`) behind additive Rust FFI while preserving C++ ownership, context threading, and direct setter semantics.
+
+- **Completed**: Extract deterministic `cResourceCount` `SetCellResources` write-path policy wiring behind additive Rust FFI
+- **Impacted files/modules**: `avida-core/source/main/cResourceCount.cc`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/resource_count_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`
+- **Result**: Routed `SetCellResources` geometry-based write-path selection through new Rust helper `avd_rc_setcell_write_path_kind`, preserving C++ traversal order, ownership, and intentional global/partial no-op behavior while locking mapping and payload-selection parity with refreshed Rust and C++ helper tests.
+- **Next candidate**: Extract deterministic `cResourceCount` gradient variable inflow setter call policy (`SetGradPlatVarInflow`) behind additive Rust FFI while preserving C++ ownership, context threading, and direct setter semantics.
+
+- **Completed**: Extract deterministic `cResourceCount` spatial resource initialization/setup/resize policy wiring behind additive Rust FFI
+- **Impacted files/modules**: `avida-core/source/main/cResourceCount.cc`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/resource_count_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`
+- **Result**: Routed setup-time geometry bucketing, spatial rectangle logging policy, and resize cell-count derivation through new Rust helpers (`avd_rc_setup_path_kind`, `avd_rc_should_log_spatial_rectangles`, `avd_rc_resize_cell_count`) while preserving C++ allocation ownership, traversal order, and legacy setup/resize semantics with refreshed Rust and C++ policy-matrix tests.
+- **Next candidate**: Extract deterministic `cResourceCount` gradient variable inflow setter call policy (`SetGradPlatVarInflow`) behind additive Rust FFI while preserving C++ ownership, context threading, and direct setter semantics.
+
+- **Completed**: Extract deterministic `cResourceCount` read-path selection policy wiring behind additive Rust FFI
+- **Impacted files/modules**: `avida-core/source/main/cResourceCount.cc`, `rust/avida-rust/src/resource_count_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`
+- **Result**: Routed geometry-based read-path branching for `cResourceCount` read APIs through Rust helper `avd_rc_read_path_kind` via `ReadCellResourceValue` and aggregate `Get` path, preserving `DoUpdates` sequencing/ownership while locking mapping and payload-selection parity with refreshed C++ helper tests.
+- **Next candidate**: Extract deterministic `cResourceCount` gradient variable inflow setter call policy (`SetGradPlatVarInflow`) behind additive Rust FFI while preserving C++ ownership, context threading, and direct setter semantics.
+
+- **Completed**: Extract deterministic `cSpatialResCount::FlowAll` per-neighbor transfer accumulation helper math behind additive Rust FFI
+- **Impacted files/modules**: `avida-core/source/main/cSpatialResCount.cc`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/spatial_res_count_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`
+- **Result**: Routed pairwise transfer accumulation to Rust helper `avd_src_compute_flow_pair_deltas` (including null-output guards), kept C++ traversal/update order ownership in `FlowAll`, and locked parity + conservation behavior with Rust/C++ helper test matrices.
+- **Next candidate**: Extract deterministic `cSpatialResCount` aggregate-update helper math (`StateAll`/`SumAll`) behind additive Rust FFI while preserving C++ traversal/state ownership.
+
+- **Completed**: Extract deterministic `cSpatialResCount` aggregate-update helper math (`StateAll`/`SumAll`) behind additive Rust FFI
+- **Impacted files/modules**: `avida-core/source/main/cSpatialResCount.cc`, `avida-core/source/main/cSpatialCountElem.h`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/spatial_res_count_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`
+- **Result**: Routed per-cell fold (`amount += delta; delta = 0`) and aggregate sum reduction through new Rust helpers (`avd_src_state_fold`, `avd_src_sum_amounts`) while preserving C++ ownership/order semantics and locking parity/guard behavior with Rust+C++ helper matrices.
+- **Next candidate**: Extract deterministic `cSpatialResCount` bulk-rate/reset helper math (`RateAll`/`ResetResourceCounts`) behind additive Rust FFI while preserving C++ traversal and ownership.
+
+- **Completed**: Extract deterministic `cSpatialResCount` bulk-rate/reset helper math (`RateAll`/`ResetResourceCounts`) behind additive Rust FFI
+- **Impacted files/modules**: `avida-core/source/main/cSpatialResCount.cc`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/spatial_res_count_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`
+- **Result**: Routed `RateAll` and `ResetResourceCounts` deterministic per-cell arithmetic through new Rust helpers (`avd_src_rate_next_delta`, `avd_src_reset_amount`) with explicit null-output guards, while preserving C++ loop ownership/order and fallback behavior; added Rust and C++ helper parity matrices covering positive/negative/zero cases.
+- **Completed**: Extract deterministic `cSpatialResCount` cell-list bulk transform helper math (`SetCellList` initialization and bounded per-cell writes) behind additive Rust FFI
+- **Impacted files/modules**: `avida-core/source/main/cSpatialResCount.cc`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/spatial_res_count_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`
+- **Result**: Routed deterministic `SetCellList` per-cell initialization fold through new Rust helper `avd_src_setcell_apply_initial`, preserving C++ traversal/order and legacy bounds behavior (`avd_src_cell_id_in_bounds_legacy_setcell`) with explicit fallback parity and Rust/C++ guard tests.
+- **Completed**: Extract deterministic `cResourceCount` precalc table-fill recurrence helpers (`SetInflow`/`SetDecay` table population loops) behind additive Rust FFI
+- **Impacted files/modules**: `avida-core/source/main/cResourceCount.cc`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/resource_count_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`
+- **Result**: Routed setter-time inflow/decay recurrence table population through new Rust helpers (`avd_rc_fill_inflow_precalc_table`, `avd_rc_fill_decay_precalc_table`) while preserving C++ setter sequencing (`id` guard + rate assignment first), row ownership, and recurrence seed semantics (`inflow[0]=0`, `decay[0]=1`) with Rust/C++ parity and guard coverage.
+- **Completed**: Idiomatic Rust FFI hardening without ABI breaks
+- **Impacted files/modules**: `rust/avida-rust/src/common.rs`, `rust/avida-rust/src/running_stats.rs`, `rust/avida-rust/src/running_average.rs`, `rust/avida-rust/src/double_sum.rs`, `rust/avida-rust/src/weighted_index.rs`, `rust/avida-rust/src/ordered_weighted_index.rs`, `rust/avida-rust/src/histogram.rs`, `rust/avida-rust/src/bit_array.rs`, `rust/avida-rust/src/provider_helpers.rs`, `rust/avida-rust/src/event_list_helpers.rs`, `rust/avida-rust/scripts/ci_ffi_analysis.py`, `rust/avida-rust/scripts/ci_abi_guard.py`, `.github/workflows/ci.yaml`, `rust/avida-rust/abi/avd_symbols_baseline.txt`
+- **Result**: Reduced repeated unsafe lifecycle boilerplate by routing handle creation/free/clone patterns through shared helpers, tightened out-parameter writes to deterministic checked paths, and added a CI FFI analysis lane that publishes symbol/call-graph artifacts plus an ABI guard that fails only on removed `avd_*` exports.
+- **Completed**: Idiomatic Rust FFI hardening phase 2 (ABI-safe)
+- **Impacted files/modules**: `rust/avida-rust/src/common.rs`, `rust/avida-rust/src/bit_array.rs`, `rust/avida-rust/src/time_series_recorder.rs`, `rust/avida-rust/src/package.rs`, `rust/avida-rust/src/resource_count_helpers.rs`, `rust/avida-rust/scripts/ci_ffi_analysis.py`, `rust/avida-rust/scripts/ffi_error_outparam_policy.md`, `.github/workflows/ci.yaml`
+- **Result**: Removed remaining pointer-deref allow annotations from active helper modules by routing binary/compare paths through shared accessors, centralized legacy bool/int/double coercion logic in `common.rs` for cross-module parity, standardized additional out-param guard behavior with focused tests, and added compact `ffi_summary.txt` CI artifact while keeping ABI guard policy unchanged (fail removals only).
+- **Completed**: Extract deterministic `cResourceCount` spatial update-step dispatch helper math (per-update cell-list branch decision and step iteration policy) behind additive Rust FFI
+- **Impacted files/modules**: `avida-core/source/main/cResourceCount.cc`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/resource_count_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`
+- **Result**: Routed `DoSpatialUpdates` iteration-count normalization and cell-list branch decision through new Rust helpers (`avd_rc_spatial_step_iterations`, `avd_rc_use_cell_list_branch`) while preserving C++ state ownership and operation ordering; added Rust/C++ helper parity tests for positive/zero/negative boundaries and maintained additive ABI guard behavior.
+- **Completed**: Extract deterministic `cResourceCount` per-resource update dispatch policy (global/non-spatial/spatial routing decision) behind additive Rust FFI
+- **Impacted files/modules**: `avida-core/source/main/cResourceCount.cc`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/resource_count_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`
+- **Result**: Routed `DoUpdates` geometry-based spatial classification, per-resource action decision, and `m_last_updated` advance policy through new Rust helpers (`avd_rc_is_spatial_geometry`, `avd_rc_dispatch_action`, `avd_rc_should_advance_last_updated`) while preserving C++ resource loop ordering, update scheduling behavior, and ownership/mutation sequencing; added Rust/C++ dispatch matrix tests and preserved additive ABI guarantees.
+- **Completed**: Extract deterministic `cResourceCount` resource update-time accumulation policy (`update_time`/wrapper entrypoint decisions) behind additive Rust FFI
+- **Impacted files/modules**: `avida-core/source/main/cResourceCount.h`, `avida-core/source/main/cResourceCount.cc`, `avida-core/include/private/rust/running_stats_ffi.h`, `rust/avida-rust/src/resource_count_helpers.rs`, `avida-core/source/targets/unit-tests/main.cc`
+- **Result**: Routed update-time delta passthrough and wrapper global-only mode policy through new Rust helpers (`avd_rc_update_time_delta`, `avd_rc_wrapper_global_only_flag`) while preserving C++ orchestration, resource update sequencing, and state ownership; added Rust/C++ boundary tests for finite/NaN/Inf passthrough and wrapper mode mapping behavior.
+- **Next candidate**: Extract deterministic `cResourceCount` gradient variable inflow setter call policy (`SetGradPlatVarInflow`) behind additive Rust FFI while preserving C++ ownership, context threading, and direct setter semantics.
+
+- **Title**: Keep new FFI modules aligned with shared pointer-accessor macro pattern
+- **Impacted files/modules**: `rust/avida-rust/src/common.rs`, future `rust/avida-rust/src/*` FFI modules
+- **Risk/impact**: The shared macro now removes duplicate pointer boilerplate for current handles, but new modules can regress if they reintroduce ad hoc null-check/deref wrappers.
+- **Suggested follow-up**: Require new FFI handle wrappers to use `common.rs` macro-generated accessors and add a small reviewer checklist item for this rule.
+- **Priority**: low
