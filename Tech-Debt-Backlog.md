@@ -24,7 +24,32 @@ This backlog captures follow-up improvements discovered during the C++ to Rust m
 - **Completed**: `PrintReuseSurvey`, reuse measures over the most abundant task-performing genotypes and a count of subroutine sites
 - **Impacted files/modules**: `rust/avida-native/crates/world/src/knockout_run.rs`, `rust/avida-native/crates/world/src/knockout.rs`, `rust/avida-native/crates/hardware/src/call_probe.rs`
 - **Result**: Answers the two weaknesses stage 3 showed (the dominant genotype often performs no task; shared sites count a straight pipeline as reuse). On the saved population of the one modular run that climbed (seed 3) the five surveyed genotypes have 0 subroutine sites; the hand-written `modular-subroutine.org` has 2.
-- **Next candidate**: read the survey in the arm-comparison view (it reads `reuse.dat` only), and find out why genotype 3321 of that population has two `call` sites to one target and still 0 subroutine sites (not checked; one of the calls may never execute).
+- **Next candidate**: read the survey in the arm-comparison view (it reads `reuse.dat` only; the maintainer left the comparison view as it is on 2026-11-15).
+- **Checked 2026-11-15**: the genotype of modular seed 3 with two `call` sites and 0 subroutine sites (`lvtnpnC...`, 61 instructions) is measured correctly. Neither `call` is followed by a nop, so each jumps forward by the number in BX, here 0, and execution simply continues; the genome has no `return`. Every site therefore runs under at most one innermost call site. The "1 distinct target" of that row is the single category that label-less calls share, not a shared subroutine.
+
+- **Title**: Maintainer's decisions on the backlog (2026-11-15)
+- **Impacted files/modules**: this file
+- **Risk/impact**: Decisions taken while reviewing the list, so that later sessions do not ask again. Reproducibility across platforms: wait, keep filed. Parallel mode: improve it. `unsupported:` stops: find what the C++ intended at each stop and port towards that intent, where one can be found. Open-endedness measures: undecided. Comparison view defects and the debugger head display for BCR and GP8: leave. Housekeeping entries (counts across documents, `Task_Optimize` edge cases, the phenotype grouping fixture): fix.
+- **Suggested follow-up**: Work in that order of the maintainer's interest: parallel mode, then the intent of the `unsupported:` stops, then the housekeeping. Each intent-based change of a stop departs from the C++ and needs a `PORTING.md` entry that states the C++ behaviour, the inferred intent and the evidence for it.
+- **Priority**: medium
+
+- **Title**: Ancestry measures are not defined for two-parent reproduction
+- **Impacted files/modules**: `rust/avida-native/crates/world/src` (MODES, phylogeny metrics), `rust/avida-native/crates/systematics/src/genotype_arbiter.rs`
+- **Risk/impact**: `PrintMODESData` and `PrintPhylogenyMetrics` assume a tree. With `divide-sex` the ancestry is a pedigree, the historic list grows without bound (86,936 historic genotypes for 3,522 living after 3,200 updates of a 60x60 world), and `DROP_EXTINCT_GENOTYPES 1` avoids the memory by switching the measures off. The `sex` arm of the stage 4 experiment therefore reports no complexity or phylogeny measure.
+- **Suggested follow-up**: Define the measures on pedigrees (for example by following one parent, or per-site ancestry), or track a bounded number of generations.
+- **Priority**: low
+
+- **Title**: `DROP_EXTINCT_GENOTYPES`: untested corners
+- **Impacted files/modules**: `rust/avida-native/crates/avida/tests/drop_extinct.rs`, `rust/avida-native/crates/viewmodel/src/capture.rs`, `rust/avida-native/crates/world/src/pop_interface.rs`
+- **Risk/impact**: The stop of the donate instructions' kin-distance check has no test. Neither front end has been run with the setting on; the Ancestry layer is left out of the frame and the code that handles a missing layer was read, not exercised. Parallel-mode identity is tested on a 20x20 world only.
+- **Suggested follow-up**: A test with `MAX_DONATE_KIN_DIST` set, and a rendered sweep of both front ends with the setting on.
+- **Priority**: low
+
+- **Title**: CI covers one platform and skips the terminal scenarios
+- **Impacted files/modules**: `.github/workflows/ci.yaml`, `rust/avida-native/crates/tui/tests/pty.rs`, `rust/avida-native/tools/suite-ref.tar.xz`
+- **Risk/impact**: Format, lint, tests and the consistency suite run on macOS arm64 only; Linux is covered by the desktop app's lane alone. The pseudo-terminal scenarios are skipped on CI (`AVIDA_SKIP_PTY_TESTS`) because they depend on timing. The suite compares against a snapshot that must be repacked by hand when a test under `avida-core/tests` changes. The workflow's actions run on a Node version GitHub has deprecated.
+- **Suggested follow-up**: Make the terminal scenarios wait on output instead of on time so that CI can run them; update the actions' versions; have the suite fail with a clear message when a test has no entry in the snapshot (it reports NO-REF today, which fails the run).
+- **Priority**: low
 
 - **Title**: Small defects in the arm-comparison view
 - **Impacted files/modules**: `rust/avida-native/crates/viewmodel/src/compare/`, `rust/avida-native/crates/gui/src/`
@@ -42,6 +67,7 @@ This backlog captures follow-up improvements discovered during the C++ to Rust m
 - **Title**: Output on Linux x86-64 is not byte-identical to macOS arm64
 - **Impacted files/modules**: `rust/avida-native/crates/apto/src/rng.rs`, `rust/avida-native/crates/apto/src/stat.rs`, `.github/workflows/ci.yaml`
 - **Risk/impact**: Since 2026-11-15 CI runs format, lint, tests and the consistency suite (from a snapshot of the reference output, `tools/suite_ref.py`) on macOS arm64, and passes there. On Linux x86-64 two `apto` tests fail: one normal deviate of 200 differs in the last bit (the platform's `log`/`sqrt`), and a NaN has the other sign. A run on Linux can therefore diverge from the same seed on macOS, and nothing tests Linux apart from the desktop app's lane.
+- **Decision 2026-11-15**: the maintainer lets this wait until a later stage; keep it filed.
 - **Suggested follow-up**: Decide whether results must be reproducible across platforms. If so, replace the platform math calls in `apto` by a portable implementation (for example the `libm` crate) and measure what that does to the suite; if not, say so in the user documentation.
 - **Priority**: medium
 
