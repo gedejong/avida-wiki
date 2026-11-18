@@ -14,6 +14,14 @@ This backlog captures follow-up improvements discovered during the C++ to Rust m
 
 - Completed entries have been moved to `documentation/archive/tech-debt-backlog-completed.md`.
 
+### Configuration format (2026-11-18)
+
+- **Title**: Move the configuration files to YAML with the settings grouped (maintainer's request, 2026-11-18: "I'd be ok with porting everything over, instead of maintaining backward compatibility")
+- **Impacted files/modules**: `rust/avida-native/crates/config` (614 settings in the flat `avida.cfg`), `crates/environment` (the `RESOURCE` and `REACTION` lines of `environment.cfg`), `crates/script` (`events.cfg`, `analyze.cfg`), `crates/hardware` (instruction set files); the 34 files of `avida-core/support/config`, the 391 `.cfg` files under `avida-core/tests`, the app's bundled configuration (`crates/gui/src/model/new_experiment.rs`), the settings editors of both front ends, `-set NAME VALUE` on the command line, `docs/`, the lab folders.
+- **Risk/impact**: The consistency suite compares output, so a change of input format leaves the reference snapshot valid as long as every test's settings convert exactly; a converter that is run over all 391 files and checked by the suite staying at no DIFF is the proof. Decided by the maintainer on 2026-11-18: one YAML file per experiment (settings, environment, events and instruction set together); organism files (`.org`) and analyze scripts stay as they are; `-set` names a setting by its dotted path (such as `mutation.copy_prob`); old files are refused with a pointer to the converter.
+- **Suggested follow-up**: (1) a grouping proposal for the 614 settings, taken from the existing section comments of `avida.cfg`, for the maintainer to edit; (2) a typed schema in `crates/config` with unknown keys refused; (3) a converter `avida convert DIR`; (4) convert support, tests and labs, suite at no DIFF; (5) remove the old readers.
+- **Priority**: medium
+
 ### Composed-computation entries (2026-11-15)
 
 - **Completed**: Stage 3 experiment, modular heads set against stock set on the adder ladder (extensions beyond the C++; `docs/guides/experiment-composed-computation.md`)
