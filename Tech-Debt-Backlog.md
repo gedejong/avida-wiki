@@ -14,13 +14,11 @@ This backlog captures follow-up improvements discovered during the C++ to Rust m
 
 - Completed entries have been moved to `documentation/archive/tech-debt-backlog-completed.md`.
 
-### Configuration format (2026-11-18)
+### Configuration format (2026-11-18, done 2026-11-19)
 
-- **Title**: Move the configuration files to YAML with the settings grouped (maintainer's request, 2026-11-18: "I'd be ok with porting everything over, instead of maintaining backward compatibility")
-- **Impacted files/modules**: `rust/avida-native/crates/config` (614 settings in the flat `avida.cfg`), `crates/environment` (the `RESOURCE` and `REACTION` lines of `environment.cfg`), `crates/script` (`events.cfg`, `analyze.cfg`), `crates/hardware` (instruction set files); the 34 files of `avida-core/support/config`, the 391 `.cfg` files under `avida-core/tests`, the app's bundled configuration (`crates/gui/src/model/new_experiment.rs`), the settings editors of both front ends, `-set NAME VALUE` on the command line, `docs/`, the lab folders.
-- **Risk/impact**: The consistency suite compares output, so a change of input format leaves the reference snapshot valid as long as every test's settings convert exactly; a converter that is run over all 391 files and checked by the suite staying at no DIFF is the proof. Decided by the maintainer on 2026-11-18: one YAML file per experiment (settings, environment, events and instruction set together); organism files (`.org`) and analyze scripts stay as they are; `-set` names a setting by its dotted path (such as `mutation.copy_prob`); old files are refused with a pointer to the converter.
-- **Suggested follow-up**: (1) a grouping proposal for the 614 settings, taken from the existing section comments of `avida.cfg`, for the maintainer to edit; (2) a typed schema in `crates/config` with unknown keys refused; (3) a converter `avida convert DIR`; (4) convert support, tests and labs, suite at no DIFF; (5) remove the old readers.
-- **Priority**: medium
+- **Completed**: One `avida.yaml` per experiment (settings in groups, instruction sets, environment, events), with `avida convert DIR` for old folders; the old readers are removed (maintainer's request, 2026-11-18). 83 on/off settings are flags (`true`/`false`), 53 settings take a named choice, 59 probabilities are refused outside 0..1 (maintainer's request, 2026-11-19). Reference: `docs/reference/config-yaml.md`, generated from `rust/avida-native/crates/config`.
+- **Open**: (1) the names of the choices await the maintainer's review, the unsure ones first (`reproduction.death_method`, `alloc_method`, `divide_method`, `mp.scheduling_style`, `time.slicing_method` 5, `time.fitness_method`, `reputation.auto`, `groups.pred_prey_switch` 2); (2) prose in `docs/` that names an option by its number is not rewritten; (3) five settings stay numbers because tests use values outside their documented list (`parasites.infection_mechanism`, `reputation.inherit`, `demes.divide_method`, `hgt.conjugation_method`, `execution.mode`); (4) `world.x` and `world.y` have no lower bound; (5) the names were not looked at in a real desktop or terminal window; (6) the lab folders of stages 3 to 8 under the maintainer's `avida-lab` still hold old files and need `avida convert` before a rerun.
+- **Priority**: low
 
 ### Composed-computation entries (2026-11-15)
 
