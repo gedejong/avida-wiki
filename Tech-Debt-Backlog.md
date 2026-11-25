@@ -38,6 +38,17 @@ This backlog captures follow-up improvements discovered during the C++ to Rust m
 - **Open**: (1) the lineage tools (`zz_logic.rs`, a scratch test, and the scripts in the lab folder `29-lineage`) are not in the repository; a population-level `PrintLineage`-style action and a dataflow printer in the port would make the study repeatable; (2) the lab folders 22 to 28 have no README; (3) no population used a loop or `call`, so the reuse measures of 2026-11-15 have nothing to measure yet.
 - **Priority**: low
 
+- **Completed**: Stage 14 and the loop measurement (2026-11-24 and 2026-11-25, accepted by the maintainer on 2026-11-25; `docs/guides/experiment-composed-computation.md`, lab folders `30-slip` and `29-lineage`). With the slip mutation copying its stretch (`slip_fill_mode` duplication), 20 of 24 populations extend an evolved two-bit adder to the three-bit sum in 150,000 updates, against 3 of 24 with a random fill (Fisher p = 1.4e-6), 7 of 24 with a shuffled copy and 5 of 24 without slip. A hand-written loop in an evolved four-bit adder triples the share of its substitutions that stop reproduction (12.5 to 35.8 %), about 1.7 % more offspring that never divide, and costs 1.6 to 2.5 % of fitness in time.
+- **Impacted files/modules**: none in the repository (experiment page only; the batch ran the committed code).
+- **Open**: (1) how the seven `scrambled` populations built their round needs their lines of descent; (2) the stage 14 watcher counted only the servers still running against its cost guard; `tools/cloud/cloud.sh` has no cumulative cost for a batch whose servers were deleted.
+- **Priority**: low
+
+- **Title**: Proposal: a pure, concatenative computing core for the heads CPU (filed 2026-11-24 at the maintainer's request)
+- **Impacted files/modules**: `rust/avida-native/crates/hardware/src/cpu_inst_lib.rs`, `rust/avida-native/crates/hardware/src/hardware_cpu_insts.rs`, `rust/avida-native/PORTING.md`
+- **Risk/impact**: Evolved adders are straight-line code; no population built a loop or used `call`. A stack language whose code is always a function from stack to stack (gates as stack operations, quotations, a capped `times`) would make duplication a composition, make iteration always end and keep intermediates. Opt-in, so no stock configuration changes. Design and comparison in `docs/guides/experiment-composed-computation.md`, "Candidate future experiments".
+- **Suggested follow-up**: Build after the loop fragility measurement and stage 14; compare with the register gates from scratch.
+- **Priority**: low
+
 - **Title**: Maintainer's decisions on the backlog (2026-11-15)
 - **Impacted files/modules**: this file
 - **Risk/impact**: Decisions taken while reviewing the list, so that later sessions do not ask again. Reproducibility across platforms: wait, keep filed. Parallel mode: improve it. `unsupported:` stops: find what the C++ intended at each stop and port towards that intent, where one can be found. Open-endedness measures: undecided. Comparison view defects and the debugger head display for BCR and GP8: leave. Housekeeping entries (counts across documents, `Task_Optimize` edge cases, the phenotype grouping fixture): fix.
